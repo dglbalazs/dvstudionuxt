@@ -12,8 +12,11 @@
     "lintfix": "prettier --write --list-different ."
   },
   "dependencies": {
+    "@fortawesome/vue-fontawesome": "^2.0.9",
     "core-js": "^3.25.3",
     "nuxt": "^2.15.8",
+    "sass": "^1.56.1",
+    "sass-loader": "^10.1.1",
     "vue": "^2.7.10",
     "vue-server-renderer": "^2.7.10",
     "vue-template-compiler": "^2.7.10"

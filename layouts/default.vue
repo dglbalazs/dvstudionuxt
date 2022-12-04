@@ -12,5 +12,7 @@ export default {}
 <style>
 body {
   background: #161616;
+  overflow-x: hidden;
+  /* overflow-y: hidden; */
 }
 </style>
