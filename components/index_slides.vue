@@ -250,16 +250,36 @@ export default {
       visibility: visible;
     }
 
+    // &.maintext1 {
+    //   translate: 0;
+    //   transition: 1.3s;
+    // }
+    // &.maintext2 {
+    //   translate: 0;
+    //   transition: 1.4s;
+    // }
     &.incomingLeft {
       z-index: 3;
       animation-timing-function: ease;
       animation: $animationtime slideChangeLeft forwards;
+      // .maintext1 {
+      //   translate: -3% 0;
+      // }
+      // .maintext2 {
+      //   translate: -3% 0;
+      // }
     }
 
     &.incomingRight {
       z-index: 3;
       animation-timing-function: ease;
       animation: $animationtime slideChangeRight forwards;
+      // .maintext1 {
+      //   translate: 3% 0;
+      // }
+      // .maintext2 {
+      //   translate: 3% 0;
+      // }
     }
 
     &.exitingLeft {

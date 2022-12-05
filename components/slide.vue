@@ -15,8 +15,8 @@
       <p>1 - 4</p>
     </div>
     <div class="maintext" tabindex="0">
-      <p>{{ maintext1 }}</p>
-      <p>{{ maintext2 }}</p>
+      <p class="maintext1">{{ maintext1 }}</p>
+      <p class="maintext2">{{ maintext2 }}</p>
     </div>
     <div class="more-section">
       <p>
@@ -82,7 +82,7 @@ export default {
 
   //   --bg-url: url('~/assets/media/' + var(--bg-img));
   //   background: $bg-image;
-  background-blend-mode: hard-light;
+  // background-blend-mode: hard-light;
   background-color: var(--bg-color);
   background-position: center 40%;
   background-repeat: no-repeat;
