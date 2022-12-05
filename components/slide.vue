@@ -68,7 +68,7 @@ export default {
   $mobile-grid-col: 0.1fr 0.5fr 3fr 1fr;
   $mobile-grid-row: 0.5fr 0.5fr 0.5fr 1.25fr 0.775fr;
   $mobile-grid-area: '. . . logo' '. arrowleft arrowright .'
-    '. pageno subtitle .' '. . title title' '. . more .';
+    '. pageno subtitle .' '. . title title' '. . more more';
   width: 100vw;
   min-height: 100vh;
   display: grid;
@@ -203,7 +203,7 @@ export default {
   .more-section {
     grid-area: more;
     color: var(--font-color);
-    font-size: clamp(1.1rem, 1.3vw, 3rem);
+    font-size: clamp(1rem, 1.3vw, 3rem);
     font-family: $ff-ss-6;
 
     letter-spacing: 0.3em;
@@ -225,6 +225,7 @@ export default {
         translate: 0;
       }
       .more-icon {
+        font-size: clamp(0.8rem, 1.2vw, 3rem);
         svg {
           animation: bounce 2s ease infinite;
         }
