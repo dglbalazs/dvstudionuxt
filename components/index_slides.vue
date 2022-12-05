@@ -166,8 +166,8 @@ export default {
   .slide {
     position: absolute;
     visibility: hidden;
-    transition: 2000ms;
     z-index: 2;
+    animation-timing-function: ease;
 
     &.visible {
       visibility: visible;
@@ -194,8 +194,8 @@ export default {
   }
 
   15% {
-    translate: -85% 0%;
-    filter: brightness(1);
+    translate: -95% 0%;
+    filter: brightness(0.1);
   }
 
   100% {
@@ -211,8 +211,8 @@ export default {
   }
 
   15% {
-    translate: 85% 0%;
-    filter: brightness(1);
+    translate: 95% 0%;
+    filter: brightness(0.1);
   }
 
   100% {
