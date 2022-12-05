@@ -1,10 +1,27 @@
 <template>
-  <div class="wrapper">
+  <div
+    class="wrapper"
+    :style="{
+      '--current-font-color': slider.currentColor,
+    }"
+  >
     <!-- <div class="leftarrow" @click="navigation('left')">-</div>
     <div class="rightarrow" @click="navigation('right')">-</div> -->
+    <div
+      :class="{ 'arrow arrow-left': true, inactive: slider.slideChange }"
+      @click="navigation('left')"
+      tabindex="0"
+    >
+      <font-awesome-icon icon="fa-solid fa-circle-left" />
+    </div>
+    <div
+      :class="{ 'arrow arrow-right': true, inactive: slider.slideChange }"
+      @click="navigation('right')"
+      tabindex="0"
+    >
+      <font-awesome-icon icon="fa-solid fa-circle-right" />
+    </div>
     <slide
-      @navigate-left="navigation('left')"
-      @navigate-right="navigation('right')"
       :subtext="eskuvo.subtext"
       :maintext1="eskuvo.maintext1"
       :maintext2="eskuvo.maintext2"
@@ -18,11 +35,17 @@
           slider.newName == 'eskuvo' && slider.slideChangeDirection == 'left',
         incomingRight:
           slider.newName == 'eskuvo' && slider.slideChangeDirection == 'right',
+        exitingLeft:
+          slider.currentName == 'eskuvo' &&
+          slider.slideChangeDirection == 'left' &&
+          slider.slideChange == true,
+        exitingRight:
+          slider.currentName == 'eskuvo' &&
+          slider.slideChangeDirection == 'right' &&
+          slider.slideChange == true,
       }"
     ></slide>
     <slide
-      @navigate-left="navigation('left')"
-      @navigate-right="navigation('right')"
       :subtext="ceg.subtext"
       :maintext1="ceg.maintext1"
       :maintext2="ceg.maintext2"
@@ -36,11 +59,17 @@
           slider.newName == 'ceg' && slider.slideChangeDirection == 'left',
         incomingRight:
           slider.newName == 'ceg' && slider.slideChangeDirection == 'right',
+        exitingLeft:
+          slider.currentName == 'ceg' &&
+          slider.slideChangeDirection == 'left' &&
+          slider.slideChange == true,
+        exitingRight:
+          slider.currentName == 'ceg' &&
+          slider.slideChangeDirection == 'right' &&
+          slider.slideChange == true,
       }"
     ></slide>
     <slide
-      @navigate-left="navigation('left')"
-      @navigate-right="navigation('right')"
       :subtext="rendezveny.subtext"
       :maintext1="rendezveny.maintext1"
       :maintext2="rendezveny.maintext2"
@@ -57,6 +86,14 @@
         incomingRight:
           slider.newName == 'rendezveny' &&
           slider.slideChangeDirection == 'right',
+        exitingLeft:
+          slider.currentName == 'rendezveny' &&
+          slider.slideChangeDirection == 'left' &&
+          slider.slideChange == true,
+        exitingRight:
+          slider.currentName == 'rendezveny' &&
+          slider.slideChangeDirection == 'right' &&
+          slider.slideChange == true,
       }"
     ></slide>
   </div>
@@ -74,6 +111,7 @@ export default {
         maxNumber: 2,
         slideChange: false,
         slideChangeDirection: undefined,
+        currentColor: 'hsl(175, 58%, 75%)',
       },
       eskuvo: {
         subtext: 'Profi Esküvői Csapat',
@@ -140,8 +178,8 @@ export default {
         this.slider.slideChange = false
         this.slider.currentName = this.slider.newName
         this.slider.newName = ''
-        console.log(this.slider)
-      }, 1500)
+        this.slider.currentColor = this[this.slider.currentName].fontcolor
+      }, 1200)
     },
   },
 }
@@ -163,11 +201,50 @@ export default {
   --var-clr-tester: hsl(2, 21%, 34%);
   --var-clr-tester: hsl(2, 41%, 84%);
 
+  .arrow {
+    display: flex;
+    z-index: 4;
+    // margin-inline: 2em;
+    color: White;
+    font-size: clamp(2rem, 2.5vw, 2.5rem);
+    position: absolute;
+    width: min-content;
+    transition: 500ms;
+    cursor: pointer;
+    &.inactive {
+      color: grey !important;
+      scale: 1 !important;
+    }
+    &.arrow-left {
+      // justify-content: flex-end;
+      top: 22%;
+      left: 5%;
+      @media (min-width: 50em) {
+        top: 33.25%;
+        left: 15%;
+      }
+    }
+    &.arrow-right {
+      top: 22%;
+      left: 20%;
+      @media (min-width: 50em) {
+        top: 33.25%;
+        left: 25%;
+      }
+    }
+    &:hover,
+    &:focus {
+      scale: 1.1;
+      color: var(--current-font-color);
+    }
+  }
+
   .slide {
     position: absolute;
     visibility: hidden;
     z-index: 2;
     animation-timing-function: ease;
+    $animationtime: 1.2s;
 
     &.visible {
       visibility: visible;
@@ -176,13 +253,20 @@ export default {
     &.incomingLeft {
       z-index: 3;
       animation-timing-function: ease;
-      animation: 1.5s slideChangeLeft forwards;
+      animation: $animationtime slideChangeLeft forwards;
     }
 
     &.incomingRight {
       z-index: 3;
       animation-timing-function: ease;
-      animation: 1.5s slideChangeRight forwards;
+      animation: $animationtime slideChangeRight forwards;
+    }
+
+    &.exitingLeft {
+      animation: $animationtime slideExitLeft forwards;
+    }
+    &.exitingRight {
+      animation: $animationtime slideExitRight forwards;
     }
   }
 }
@@ -218,6 +302,40 @@ export default {
   100% {
     translate: 0;
     filter: brightness(1);
+  }
+}
+
+@keyframes slideExitLeft {
+  0% {
+    translate: 0;
+    filter: brightness(1);
+  }
+
+  15% {
+    translate: 2% 0%;
+    filter: brightness(0.95);
+  }
+
+  100% {
+    translate: 25% 0%;
+    filter: brightness(0.2);
+  }
+}
+
+@keyframes slideExitRight {
+  0% {
+    translate: 0;
+    filter: brightness(1);
+  }
+
+  15% {
+    translate: -2% 0%;
+    filter: brightness(0.95);
+  }
+
+  100% {
+    translate: -25% 0%;
+    filter: brightness(0.2);
   }
 }
 </style>

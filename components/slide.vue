@@ -8,16 +8,6 @@
       backgroundImage: `url(${bgimage})`,
     }"
   >
-    <div class="arrow arrow-left" @click="$emit('navigate-left')" tabindex="0">
-      <font-awesome-icon icon="fa-solid fa-circle-left" />
-    </div>
-    <div
-      class="arrow arrow-right"
-      @click="$emit('navigate-right')"
-      tabindex="0"
-    >
-      <font-awesome-icon icon="fa-solid fa-circle-right" />
-    </div>
     <div class="subtext">
       <p>{{ subtext }}</p>
     </div>
@@ -29,7 +19,12 @@
       <p>{{ maintext2 }}</p>
     </div>
     <div class="more-section">
-      <p>Részletesebben</p>
+      <p>
+        Részletesebben
+        <span class="more-icon">
+          <font-awesome-icon icon="fa-solid fa-arrow-turn-down" />
+        </span>
+      </p>
     </div>
     <!-- <div class="title-text">Esküvő</div> -->
   </div>
@@ -229,10 +224,26 @@ export default {
         padding: 0.4em 1.25em;
         translate: 0;
       }
-    }
-
-    .arrow {
-      font-size: 0.8em;
+      .more-icon {
+        svg {
+          animation: bounce 2s ease infinite;
+        }
+      }
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-0.2em);
+        }
+        60% {
+          transform: translateY(-0.1em);
+        }
+      }
     }
   }
 }
