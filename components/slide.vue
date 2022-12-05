@@ -8,15 +8,25 @@
       backgroundImage: `url(${bgimage})`,
     }"
   >
+    <div class="arrow arrow-left" @click="$emit('navigate-left')" tabindex="0">
+      <font-awesome-icon icon="fa-solid fa-circle-left" />
+    </div>
+    <div
+      class="arrow arrow-right"
+      @click="$emit('navigate-right')"
+      tabindex="0"
+    >
+      <font-awesome-icon icon="fa-solid fa-circle-right" />
+    </div>
     <div class="subtext">
       <p>{{ subtext }}</p>
     </div>
-    <div class="maintext">
-      <p>{{ maintext1 }}</p>
-      <p>{{ maintext2 }}</p>
-    </div>
     <div class="pageno">
       <p>1 - 4</p>
+    </div>
+    <div class="maintext" tabindex="0">
+      <p>{{ maintext1 }}</p>
+      <p>{{ maintext2 }}</p>
     </div>
     <div class="more-section">
       <p>Részletesebben</p>
@@ -57,13 +67,13 @@ export default {
 
   $desktop-grid-col: 0.3fr 0.5fr 3fr 1fr;
   $desktop-grid-row: 1fr 1fr 0.5fr 1.25fr 0.775fr;
-  $desktop-grid-area: '. . . logo' '. . . .' '. pageno subtitle .'
-    '. . title title' '. . more .';
+  $desktop-grid-area: '. . . logo' '. arrowleft arrowright .'
+    '. pageno subtitle .' '. . title title' '. . more .';
 
-  $mobile-grid-col: 0.3fr 0.5fr 3fr 1fr;
-  $mobile-grid-row: 1fr 0.1fr 0.5fr 1.25fr 0.775fr;
-  $mobile-grid-area: '. . . .' '. . . .' '. pageno subtitle .' '. . title title'
-    '. . more .';
+  $mobile-grid-col: 0.1fr 0.5fr 3fr 1fr;
+  $mobile-grid-row: 0.5fr 0.5fr 0.5fr 1.25fr 0.775fr;
+  $mobile-grid-area: '. . . logo' '. arrowleft arrowright .'
+    '. pageno subtitle .' '. . title title' '. . more .';
   width: 100vw;
   min-height: 100vh;
   display: grid;
@@ -103,6 +113,34 @@ export default {
     grid-template-areas: $desktop-grid-area;
   }
 
+  .arrow {
+    display: flex;
+    // margin-inline: 2em;
+    color: White;
+    font-size: clamp(2rem, 2.5vw, 2.5rem);
+    position: absolute;
+    width: min-content;
+    transition: 500ms;
+    cursor: pointer;
+    &.arrow-left {
+      // justify-content: flex-end;
+      grid-area: arrowleft;
+      top: 50%;
+      right: 0vw;
+    }
+    &.arrow-right {
+      top: 50%;
+      left: 5vw;
+      grid-area: arrowright;
+    }
+
+    &:hover,
+    &:focus {
+      scale: 1.1;
+      color: var(--font-color);
+    }
+  }
+
   // T E X T   S E T U P
   // ----------------
   .subtext {
@@ -130,6 +168,8 @@ export default {
 
     text-transform: capitalize;
     vertical-align: text-top;
+    width: max-content;
+    max-width: 66vw;
     width: 100%;
     line-height: 1.225;
     position: relative;
@@ -137,6 +177,15 @@ export default {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    cursor: pointer;
+
+    &:hover + .more-section p,
+    &:focus + .more-section p {
+      background: var(--font-color);
+      color: black;
+      padding: 0.4em 1.25em;
+      translate: 0;
+    }
   }
 
   .pageno {
@@ -155,6 +204,7 @@ export default {
 
   // See more section
   // ------------------
+
   .more-section {
     grid-area: more;
     color: var(--font-color);
@@ -165,15 +215,19 @@ export default {
 
     p {
       border-radius: 2em;
-      transition-property: padding, background, color;
-      transition-duration: 400ms, 600ms, 600ms;
-      transition-delay: 0ms, 200ms, 200ms;
+      transition-property: padding, background, color, translate;
+      transition-duration: 400ms, 600ms, 600ms, 600ms;
+      transition-delay: 0ms, 200ms, 200ms, 200ms;
       width: fit-content;
-
-      &:hover {
+      padding: 0.4em 1.25em;
+      translate: -1em -1em;
+      cursor: pointer;
+      &:hover,
+      &:focus {
         background: var(--font-color);
         color: black;
         padding: 0.4em 1.25em;
+        translate: 0;
       }
     }
 

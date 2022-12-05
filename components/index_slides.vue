@@ -1,8 +1,10 @@
 <template>
   <div class="wrapper">
-    <div class="leftarrow" @click="navigation('left')">-</div>
-    <div class="rightarrow" @click="navigation('right')">-</div>
+    <!-- <div class="leftarrow" @click="navigation('left')">-</div>
+    <div class="rightarrow" @click="navigation('right')">-</div> -->
     <slide
+      @navigate-left="navigation('left')"
+      @navigate-right="navigation('right')"
       :subtext="eskuvo.subtext"
       :maintext1="eskuvo.maintext1"
       :maintext2="eskuvo.maintext2"
@@ -10,9 +12,17 @@
       :fontcolor="eskuvo.fontcolor"
       :fontcolor2="eskuvo.fontcolor2"
       :bgimage="eskuvo.bgimage"
-      v-if="slider.currentName == 'eskuvo'"
+      :class="{
+        visible: slider.currentName == 'eskuvo' || slider.newName == 'eskuvo',
+        incomingLeft:
+          slider.newName == 'eskuvo' && slider.slideChangeDirection == 'left',
+        incomingRight:
+          slider.newName == 'eskuvo' && slider.slideChangeDirection == 'right',
+      }"
     ></slide>
     <slide
+      @navigate-left="navigation('left')"
+      @navigate-right="navigation('right')"
       :subtext="ceg.subtext"
       :maintext1="ceg.maintext1"
       :maintext2="ceg.maintext2"
@@ -20,9 +30,17 @@
       :fontcolor="ceg.fontcolor"
       :fontcolor2="ceg.fontcolor2"
       :bgimage="ceg.bgimage"
-      v-if="slider.currentName == 'ceg'"
+      :class="{
+        visible: slider.currentName == 'ceg' || slider.newName == 'ceg',
+        incomingLeft:
+          slider.newName == 'ceg' && slider.slideChangeDirection == 'left',
+        incomingRight:
+          slider.newName == 'ceg' && slider.slideChangeDirection == 'right',
+      }"
     ></slide>
     <slide
+      @navigate-left="navigation('left')"
+      @navigate-right="navigation('right')"
       :subtext="rendezveny.subtext"
       :maintext1="rendezveny.maintext1"
       :maintext2="rendezveny.maintext2"
@@ -30,7 +48,16 @@
       :fontcolor="rendezveny.fontcolor"
       :fontcolor2="rendezveny.fontcolor2"
       :bgimage="rendezveny.bgimage"
-      v-if="slider.currentName == 'rendezveny'"
+      :class="{
+        visible:
+          slider.currentName == 'rendezveny' || slider.newName == 'rendezveny',
+        incomingLeft:
+          slider.newName == 'rendezveny' &&
+          slider.slideChangeDirection == 'left',
+        incomingRight:
+          slider.newName == 'rendezveny' &&
+          slider.slideChangeDirection == 'right',
+      }"
     ></slide>
   </div>
 </template>
@@ -43,7 +70,10 @@ export default {
         current: 0,
         slides: ['eskuvo', 'ceg', 'rendezveny'],
         currentName: 'eskuvo',
+        newName: '',
         maxNumber: 2,
+        slideChange: false,
+        slideChangeDirection: undefined,
       },
       eskuvo: {
         subtext: 'Profi Esküvői Csapat',
@@ -75,28 +105,43 @@ export default {
     }
   },
   methods: {
-    navigation(direction) {
+    navigationResult(direction) {
       let tempNumber
+      let result
       if (direction == 'left') {
         tempNumber = this.slider.current - 1
         console.log(tempNumber)
         if (tempNumber < 0) {
-          this.slider.current = this.slider.maxNumber
+          result = this.slider.maxNumber
         } else {
-          this.slider.current = tempNumber
+          result = tempNumber
         }
       }
       if (direction == 'right') {
         tempNumber = this.slider.current + 1
         console.log(tempNumber)
         if (tempNumber > this.slider.maxNumber) {
-          this.slider.current = 0
+          result = 0
         } else {
-          this.slider.current = tempNumber
+          result = tempNumber
         }
       }
-      console.log(this.current)
-      this.slider.currentName = this.slider.slides[this.slider.current]
+      return result
+    },
+    navigation(direction) {
+      if (this.slider.slideChange) return
+      this.slider.slideChange = true
+      this.slider.slideChangeDirection = direction
+      this.slider.current = this.navigationResult(direction)
+      this.slider.newName = this.slider.slides[this.slider.current]
+      console.log(this.slider.newName)
+      setTimeout(() => {
+        console.log('asd')
+        this.slider.slideChange = false
+        this.slider.currentName = this.slider.newName
+        this.slider.newName = ''
+        console.log(this.slider)
+      }, 1500)
     },
   },
 }
@@ -118,27 +163,61 @@ export default {
   --var-clr-tester: hsl(2, 21%, 34%);
   --var-clr-tester: hsl(2, 41%, 84%);
 
-  .leftarrow,
-  .rightarrow {
-    position: fixed;
-    height: 100vh;
-    width: 8vw;
-    top: 0px;
-    color: white;
-    font-size: 4rem;
-    backdrop-filter: blur(2px) brightness(0.9);
-    z-index: 50;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+  .slide {
+    position: absolute;
+    visibility: hidden;
+    transition: 2000ms;
+    z-index: 2;
+
+    &.visible {
+      visibility: visible;
+    }
+
+    &.incomingLeft {
+      z-index: 3;
+      animation-timing-function: ease;
+      animation: 1.5s slideChangeLeft forwards;
+    }
+
+    &.incomingRight {
+      z-index: 3;
+      animation-timing-function: ease;
+      animation: 1.5s slideChangeRight forwards;
+    }
   }
-  .leftarrow {
-    left: 0px;
+}
+
+@keyframes slideChangeLeft {
+  0% {
+    translate: -100% 0%;
+    filter: brightness(0.1);
   }
-  .rightarrow {
-    right: 0px;
+
+  15% {
+    translate: -85% 0%;
+    filter: brightness(1);
+  }
+
+  100% {
+    translate: 0;
+    filter: brightness(1);
+  }
+}
+
+@keyframes slideChangeRight {
+  0% {
+    translate: 100% 0%;
+    filter: brightness(0.1);
+  }
+
+  15% {
+    translate: 85% 0%;
+    filter: brightness(1);
+  }
+
+  100% {
+    translate: 0;
+    filter: brightness(1);
   }
 }
 </style>
