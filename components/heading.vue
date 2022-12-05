@@ -40,8 +40,8 @@ nav {
   margin-inline: auto;
   padding: 1.5rem;
   top: 0px;
-  left: 0px;
-  width: 100vw;
+  right: 0px;
+  width: max-content;
   z-index: 999;
 
   .flex-container {
