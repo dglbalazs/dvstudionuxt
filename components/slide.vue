@@ -1,6 +1,6 @@
 <template>
   <div
-    class="slide active"
+    :class="{ slide: true, active: true, bgblend: backgroundblend }"
     :style="{
       '--bg-color': bgcolor,
       '--font-color': fontcolor,
@@ -40,6 +40,7 @@ export default {
     'fontcolor',
     'fontcolor2',
     'bgimage',
+    'backgroundblend',
   ],
 }
 </script>
@@ -82,7 +83,9 @@ export default {
 
   //   --bg-url: url('~/assets/media/' + var(--bg-img));
   //   background: $bg-image;
-  // background-blend-mode: hard-light;
+  &.bgblend {
+    background-blend-mode: hard-light;
+  }
   background-color: var(--bg-color);
   background-position: center 40%;
   background-repeat: no-repeat;

@@ -29,6 +29,7 @@
       :fontcolor="eskuvo.fontcolor"
       :fontcolor2="eskuvo.fontcolor2"
       :bgimage="eskuvo.bgimage"
+      :backgroundblend="eskuvo.backgroundblend"
       :class="{
         visible: slider.currentName == 'eskuvo' || slider.newName == 'eskuvo',
         incomingLeft:
@@ -53,6 +54,7 @@
       :fontcolor="ceg.fontcolor"
       :fontcolor2="ceg.fontcolor2"
       :bgimage="ceg.bgimage"
+      :backgroundblend="ceg.backgroundblend"
       :class="{
         visible: slider.currentName == 'ceg' || slider.newName == 'ceg',
         incomingLeft:
@@ -77,6 +79,7 @@
       :fontcolor="rendezveny.fontcolor"
       :fontcolor2="rendezveny.fontcolor2"
       :bgimage="rendezveny.bgimage"
+      :backgroundblend="rendezveny.backgroundblend"
       :class="{
         visible:
           slider.currentName == 'rendezveny' || slider.newName == 'rendezveny',
@@ -121,6 +124,7 @@ export default {
         fontcolor: 'hsl(175, 58%, 75%)',
         fontcolor2: 'hsl(186, 78%, 70%)',
         bgimage: require('~/assets/media/wedding_bg3.png'),
+        backgroundblend: false,
       },
       ceg: {
         subtext: 'Céges Imázs',
@@ -130,6 +134,7 @@ export default {
         fontcolor: 'hsl(150, 58%, 75%)',
         fontcolor2: 'hsl(161, 75%, 75%)',
         bgimage: require('~/assets/media/_ceg_bg2.png'),
+        backgroundblend: false,
       },
       rendezveny: {
         subtext: 'Nagyszabású rendezvények',
@@ -139,6 +144,7 @@ export default {
         fontcolor: 'hsl(2, 41%, 84%)',
         fontcolor2: 'hsl(10, 61%, 84%)',
         bgimage: require('~/assets/media/_event_bg3.png'),
+        backgroundblend: true,
       },
     }
   },
