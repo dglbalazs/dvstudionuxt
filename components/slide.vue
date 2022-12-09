@@ -111,34 +111,6 @@ export default {
     grid-template-areas: $desktop-grid-area;
   }
 
-  .arrow {
-    display: flex;
-    // margin-inline: 2em;
-    color: White;
-    font-size: clamp(2rem, 2.5vw, 2.5rem);
-    position: absolute;
-    width: min-content;
-    transition: 500ms;
-    cursor: pointer;
-    &.arrow-left {
-      // justify-content: flex-end;
-      grid-area: arrowleft;
-      top: 50%;
-      right: 0vw;
-    }
-    &.arrow-right {
-      top: 50%;
-      left: 5vw;
-      grid-area: arrowright;
-    }
-
-    &:hover,
-    &:focus {
-      scale: 1.1;
-      color: var(--font-color);
-    }
-  }
-
   // T E X T   S E T U P
   // ----------------
   .subtext {
@@ -146,7 +118,7 @@ export default {
 
     font-family: $ff-ss-2;
     font-weight: 100;
-    font-size: clamp(0.85rem, 1.5vw, 1.25rem);
+    font-size: max(0.85rem, 1.3vw);
 
     color: var(--font-color);
 
@@ -159,7 +131,7 @@ export default {
 
     font-family: $ff-ss-6;
     font-weight: 200;
-    font-size: clamp(2.3rem, 4.3vw, 9.5rem);
+    font-size: max(2.3rem, 3.7vw);
     letter-spacing: -0.015em;
 
     color: var(--font-color);
@@ -191,7 +163,7 @@ export default {
 
     font-family: $ff-ss-2;
     font-weight: 100;
-    font-size: clamp(0.85rem, 1.5vw, 1.25rem);
+    font-size: max(0.85rem, 1.5vw);
     line-height: 1.5rem;
 
     color: var(--font-color);
@@ -206,9 +178,9 @@ export default {
   .more-section {
     grid-area: more;
     color: var(--font-color);
-    font-size: clamp(1rem, 1.3vw, 3rem);
+    font-size: max(1rem, 1.3vw);
     font-family: $ff-ss-6;
-
+    padding: 2em 0;
     letter-spacing: 0.3em;
 
     p {
