@@ -21,80 +21,33 @@
     >
       <font-awesome-icon icon="fa-solid fa-circle-right" />
     </div>
+
+    <!-- Dynamically create slides -->
     <slide
-      :subtext="eskuvo.subtext"
-      :maintext1="eskuvo.maintext1"
-      :maintext2="eskuvo.maintext2"
-      :bgcolor="eskuvo.bgcolor"
-      :fontcolor="eskuvo.fontcolor"
-      :fontcolor2="eskuvo.fontcolor2"
-      :bgimage="eskuvo.bgimage"
-      :backgroundblend="eskuvo.backgroundblend"
-      :class="{
-        visible: slider.currentName == 'eskuvo' || slider.newName == 'eskuvo',
-        incomingLeft:
-          slider.newName == 'eskuvo' && slider.slideChangeDirection == 'left',
-        incomingRight:
-          slider.newName == 'eskuvo' && slider.slideChangeDirection == 'right',
-        exitingLeft:
-          slider.currentName == 'eskuvo' &&
-          slider.slideChangeDirection == 'left' &&
-          slider.slideChange == true,
-        exitingRight:
-          slider.currentName == 'eskuvo' &&
-          slider.slideChangeDirection == 'right' &&
-          slider.slideChange == true,
-      }"
-    ></slide>
-    <slide
-      :subtext="ceg.subtext"
-      :maintext1="ceg.maintext1"
-      :maintext2="ceg.maintext2"
-      :bgcolor="ceg.bgcolor"
-      :fontcolor="ceg.fontcolor"
-      :fontcolor2="ceg.fontcolor2"
-      :bgimage="ceg.bgimage"
-      :backgroundblend="ceg.backgroundblend"
-      :class="{
-        visible: slider.currentName == 'ceg' || slider.newName == 'ceg',
-        incomingLeft:
-          slider.newName == 'ceg' && slider.slideChangeDirection == 'left',
-        incomingRight:
-          slider.newName == 'ceg' && slider.slideChangeDirection == 'right',
-        exitingLeft:
-          slider.currentName == 'ceg' &&
-          slider.slideChangeDirection == 'left' &&
-          slider.slideChange == true,
-        exitingRight:
-          slider.currentName == 'ceg' &&
-          slider.slideChangeDirection == 'right' &&
-          slider.slideChange == true,
-      }"
-    ></slide>
-    <slide
-      :subtext="rendezveny.subtext"
-      :maintext1="rendezveny.maintext1"
-      :maintext2="rendezveny.maintext2"
-      :bgcolor="rendezveny.bgcolor"
-      :fontcolor="rendezveny.fontcolor"
-      :fontcolor2="rendezveny.fontcolor2"
-      :bgimage="rendezveny.bgimage"
-      :backgroundblend="rendezveny.backgroundblend"
+      v-for="(slide, index) in slider.slides"
+      :key="index"
+      :subtext="slide.subtext"
+      :maintext1="slide.maintext1"
+      :maintext2="slide.maintext2"
+      :bgcolor="slide.bgcolor"
+      :fontcolor="slide.fontcolor"
+      :fontcolor2="slide.fontcolor2"
+      :bgimage="slide.bgimage"
+      :backgroundblend="slide.backgroundblend"
       :class="{
         visible:
-          slider.currentName == 'rendezveny' || slider.newName == 'rendezveny',
+          slider.currentName == slide.name || slider.newName == slide.name,
         incomingLeft:
-          slider.newName == 'rendezveny' &&
-          slider.slideChangeDirection == 'left',
+          slider.newName == slide.name && slider.slideChangeDirection == 'left',
         incomingRight:
-          slider.newName == 'rendezveny' &&
+          slider.newName == slide.name &&
           slider.slideChangeDirection == 'right',
         exitingLeft:
-          slider.currentName == 'rendezveny' &&
+          slider.currentName == slide.name &&
           slider.slideChangeDirection == 'left' &&
           slider.slideChange == true,
         exitingRight:
-          slider.currentName == 'rendezveny' &&
+          slider.currentName == slide.name &&
           slider.slideChangeDirection == 'right' &&
           slider.slideChange == true,
       }"
@@ -115,60 +68,61 @@ export default {
         slideChange: false,
         slideChangeDirection: undefined,
         currentColor: 'hsl(175, 58%, 75%)',
-      },
-      eskuvo: {
-        subtext: 'Profi Esküvői Csapat',
-        maintext1: 'Értjük az egyszeri',
-        maintext2: 'Pillanatok Fontosságát.',
-        bgcolor: 'hsl(175, 28%, 32%)',
-        fontcolor: 'hsl(175, 58%, 75%)',
-        fontcolor2: 'hsl(186, 78%, 70%)',
-        bgimage: require('~/assets/media/wedding_bg3.png'),
-        backgroundblend: false,
-      },
-      ceg: {
-        subtext: 'Céges Imázs',
-        maintext1: 'Új Köntös',
-        maintext2: 'A Márkádnak.',
-        bgcolor: 'hsl(150, 28%, 32%)',
-        fontcolor: 'hsl(150, 58%, 75%)',
-        fontcolor2: 'hsl(161, 75%, 75%)',
-        bgimage: require('~/assets/media/_ceg_bg2.png'),
-        backgroundblend: false,
-      },
-      rendezveny: {
-        subtext: 'Nagyszabású rendezvények',
-        maintext1: 'Digitálisan is éld',
-        maintext2: 'újra az élményt.',
-        bgcolor: 'hsl(2, 28%, 32%)',
-        fontcolor: 'hsl(2, 41%, 84%)',
-        fontcolor2: 'hsl(10, 61%, 84%)',
-        bgimage: require('~/assets/media/_event_bg3.png'),
-        backgroundblend: true,
+        slides: [
+          {
+            id: 1,
+            name: 'eskuvo',
+            subtext: 'Profi Esküvői Csapat',
+            maintext1: 'Értjük az egyszeri',
+            maintext2: 'Pillanatok Fontosságát.',
+            bgcolor: 'hsl(175, 28%, 32%)',
+            fontcolor: 'hsl(175, 58%, 75%)',
+            fontcolor2: 'hsl(186, 78%, 70%)',
+            bgimage: require('~/assets/media/wedding_bg3.png'),
+            backgroundblend: false,
+          },
+          {
+            id: 2,
+            name: 'ceg',
+            subtext: 'Céges Imázs',
+            maintext1: 'Új Köntös',
+            maintext2: 'A Márkádnak.',
+            bgcolor: 'hsl(150, 28%, 32%)',
+            fontcolor: 'hsl(150, 58%, 75%)',
+            fontcolor2: 'hsl(161, 75%, 75%)',
+            bgimage: require('~/assets/media/_ceg_bg2.png'),
+            backgroundblend: false,
+          },
+          {
+            id: 3,
+            name: 'rendezveny',
+            subtext: 'Nagyszabású rendezvények',
+            maintext1: 'Digitálisan is éld',
+            maintext2: 'újra az élményt.',
+            bgcolor: 'hsl(2, 28%, 32%)',
+            fontcolor: 'hsl(2, 41%, 84%)',
+            fontcolor2: 'hsl(10, 61%, 84%)',
+            bgimage: require('~/assets/media/_event_bg3.png'),
+            backgroundblend: true,
+          },
+        ],
       },
     }
   },
   methods: {
     navigationResult(direction) {
-      let tempNumber
       let result
       if (direction == 'left') {
-        tempNumber = this.slider.current - 1
-        console.log(tempNumber)
-        if (tempNumber < 0) {
-          result = this.slider.maxNumber
-        } else {
-          result = tempNumber
-        }
+        this.slider.current - 1 < 0
+          ? (result = this.slider.maxNumber)
+          : (result = this.slider.current - 1)
+        console.log(result)
       }
       if (direction == 'right') {
-        tempNumber = this.slider.current + 1
-        console.log(tempNumber)
-        if (tempNumber > this.slider.maxNumber) {
-          result = 0
-        } else {
-          result = tempNumber
-        }
+        this.slider.current + 1 > this.slider.maxNumber
+          ? (result = 0)
+          : (result = this.slider.current + 1)
+        console.log(result)
       }
       return result
     },
@@ -177,14 +131,15 @@ export default {
       this.slider.slideChange = true
       this.slider.slideChangeDirection = direction
       this.slider.current = this.navigationResult(direction)
-      this.slider.newName = this.slider.slides[this.slider.current]
+      this.slider.newName = this.slider.slides[this.slider.current].name
       console.log(this.slider.newName)
       setTimeout(() => {
         console.log('asd')
         this.slider.slideChange = false
         this.slider.currentName = this.slider.newName
         this.slider.newName = ''
-        this.slider.currentColor = this[this.slider.currentName].fontcolor
+        this.slider.currentColor =
+          this.slider.slides[this.slider.current].fontcolor
       }, 1200)
     },
   },
