@@ -25,7 +25,9 @@
     <!-- Dynamically create slides -->
     <slide
       v-for="(slide, index) in slider.slides"
+      @slide-selected="$emit('slide-selected')"
       :key="index"
+      :id="slide.id"
       :subtext="slide.subtext"
       :maintext1="slide.maintext1"
       :maintext2="slide.maintext2"

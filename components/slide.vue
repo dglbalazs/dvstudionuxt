@@ -12,13 +12,13 @@
       <p>{{ subtext }}</p>
     </div>
     <div class="pageno">
-      <p>1 - 4</p>
+      <p>{{ id }} - 3</p>
     </div>
-    <div class="maintext" tabindex="0">
+    <div class="maintext" tabindex="0" @click="$emit('slide-selected')">
       <p class="maintext1">{{ maintext1 }}</p>
       <p class="maintext2">{{ maintext2 }}</p>
     </div>
-    <div class="more-section">
+    <div class="more-section" @click="$emit('slide-selected')">
       <p>
         Részletesebben
         <span class="more-icon">
@@ -33,6 +33,7 @@
 <script>
 export default {
   props: [
+    'id',
     'subtext',
     'maintext1',
     'maintext2',
@@ -62,7 +63,7 @@ export default {
   $ff-ss-6: 'Open Sans', sans-serif;
 
   $desktop-grid-col: 0.3fr 0.5fr 3fr 1fr;
-  $desktop-grid-row: 1fr 1fr 0.5fr 1.25fr 0.775fr;
+  $desktop-grid-row: 0.8fr 1.3fr 0.3fr 1.25fr 0.975fr;
   $desktop-grid-area: '. . . logo' '. arrowleft arrowright .'
     '. pageno subtitle .' '. . title title' '. . more .';
 
