@@ -3,6 +3,7 @@
     class="wrapper"
     :style="{
       '--current-font-color': slider.currentColor,
+      '--current-bg-color': slider.currentBgColor,
     }"
   >
     <!-- <div class="leftarrow" @click="navigation('left')">-</div>
@@ -70,6 +71,7 @@ export default {
         slideChange: false,
         slideChangeDirection: undefined,
         currentColor: 'hsl(175, 58%, 75%)',
+        currentBgColor: 'hsl(175, 28%, 32%)',
         slides: [
           {
             id: 1,
@@ -142,6 +144,8 @@ export default {
         this.slider.newName = ''
         this.slider.currentColor =
           this.slider.slides[this.slider.current].fontcolor
+        this.slider.currentBgColor =
+          this.slider.slides[this.slider.current].bgcolor
       }, 1200)
     },
   },
@@ -203,11 +207,12 @@ export default {
   }
 
   .slide {
+    $animationtime: 1.2s;
+    $animationfunction: cubic-bezier(0.75, -0.02, 0.45, 1);
     position: absolute;
     visibility: hidden;
     z-index: 2;
-    animation-timing-function: ease;
-    $animationtime: 1.2s;
+    animation-timing-function: $animationfunction;
 
     &.visible {
       visibility: visible;
@@ -223,8 +228,8 @@ export default {
     // }
     &.incomingLeft {
       z-index: 3;
-      animation-timing-function: ease;
-      animation: $animationtime slideChangeLeft forwards;
+      animation-timing-function: $animationfunction;
+      animation: $animationtime slideChangeLeft $animationfunction forwards;
       // .maintext1 {
       //   translate: -3% 0;
       // }
@@ -235,8 +240,8 @@ export default {
 
     &.incomingRight {
       z-index: 3;
-      animation-timing-function: ease;
-      animation: $animationtime slideChangeRight forwards;
+      animation-timing-function: $animationfunction;
+      animation: $animationtime slideChangeRight $animationfunction forwards;
       // .maintext1 {
       //   translate: 3% 0;
       // }
@@ -246,77 +251,57 @@ export default {
     }
 
     &.exitingLeft {
-      animation: $animationtime slideExitLeft forwards;
+      animation: $animationtime slideExitLeft $animationfunction forwards;
     }
     &.exitingRight {
-      animation: $animationtime slideExitRight forwards;
+      animation: $animationtime slideExitRight $animationfunction forwards;
     }
   }
 }
 
 @keyframes slideChangeLeft {
-  0% {
+  from {
     translate: -100% 0%;
     filter: brightness(0.1);
   }
 
-  15% {
-    translate: -95% 0%;
-    filter: brightness(0.1);
-  }
-
-  100% {
+  to {
     translate: 0;
     filter: brightness(1);
   }
 }
 
 @keyframes slideChangeRight {
-  0% {
+  from {
     translate: 100% 0%;
     filter: brightness(0.1);
   }
 
-  15% {
-    translate: 95% 0%;
-    filter: brightness(0.1);
-  }
-
-  100% {
+  to {
     translate: 0;
     filter: brightness(1);
   }
 }
 
 @keyframes slideExitLeft {
-  0% {
+  from {
     translate: 0;
     filter: brightness(1);
   }
 
-  15% {
-    translate: 2% 0%;
-    filter: brightness(0.95);
-  }
-
-  100% {
+  to {
     translate: 25% 0%;
     filter: brightness(0.2);
   }
 }
 
 @keyframes slideExitRight {
-  0% {
+  from {
     translate: 0;
     filter: brightness(1);
   }
 
-  15% {
-    translate: -2% 0%;
-    filter: brightness(0.95);
-  }
-
-  100% {
+  to {
     translate: -25% 0%;
     filter: brightness(0.2);
   }
