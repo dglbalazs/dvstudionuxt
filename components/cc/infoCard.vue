@@ -10,7 +10,9 @@
     <v-card-subtitle> 2 drónnal felszerelve</v-card-subtitle>
 
     <v-card-actions>
-      <v-btn color="orange lighten-2" text> Több infó </v-btn>
+      <v-btn color="orange lighten-2" text @click="show = !show">
+        {{ show ? 'Kevesebb' : 'Több infó' }}</v-btn
+      >
 
       <v-spacer></v-spacer>
 
