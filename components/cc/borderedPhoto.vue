@@ -1,18 +1,18 @@
 <!-- INSERT INTO THE Template section -->
 
-<!-- <CcPhotoimg
-:image="CcPhotoImg1.image"
-:borderDir="CcPhotoImg1.borderDir"
-:height="CcPhotoImg1.height"
-:width="CcPhotoImg1.width"
-:scaleVw="CcPhotoImg1.scaleVw"
-:mobileScaleVw="CcPhotoImg1.mobileScaleVw"
-:minW="CcPhotoImg1.minW"
-></CcPhotoimg> -->
+<!-- <CcBorderedPhoto
+:image="CcBorderedPhoto1.image"
+:borderDir="CcBorderedPhoto1.borderDir"
+:height="CcBorderedPhoto1.height"
+:width="CcBorderedPhoto1.width"
+:scaleVw="CcBorderedPhoto1.scaleVw"
+:mobileScaleVw="CcBorderedPhoto1.mobileScaleVw"
+:minW="CcBorderedPhoto1.minW"
+></CcBorderedPhoto> -->
 
 <!-- INSERT INTO THE data() api -->
 
-<!-- CcPhotoImg1: {
+<!-- CcBorderedPhoto1: {
     image: require('~/assets/media/_wedding_bg.png'),
     borderDir: 'ru',
     height: 400,
@@ -25,7 +25,7 @@
 <template>
   <div>
     <div
-      :class="['photoimg', borderDir]"
+      :class="['bordered-photo', borderDir]"
       :style="{
         '--height': height,
         '--width': width,
@@ -74,7 +74,7 @@ export default {
 </script>
 
 <style lang="scss">
-.photoimg {
+.bordered-photo {
   --height: 486;
   --width: 302;
   --scale: 20vw;

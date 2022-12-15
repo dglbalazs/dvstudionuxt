@@ -23,6 +23,7 @@
         <CcInfoCard></CcInfoCard>
         <CcInfoCard></CcInfoCard>
       </v-row>
+      <ccSPPhotoCollection></ccSPPhotoCollection>
     </div>
     <!-- <CcPhotoimg
       :image="CcPhotoImg1.image"
@@ -40,7 +41,7 @@
 export default {
   data() {
     return {
-      CcPhotoImg1: {
+      CcBorderedPhoto1: {
         image: require('~/assets/media/_wedding_bg.png'),
         borderDir: 'ru',
         height: 400,

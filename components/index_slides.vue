@@ -173,7 +173,7 @@ export default {
     z-index: 4;
     // margin-inline: 2em;
     color: White;
-    font-size: clamp(2rem, 2.5vw, 2.5rem);
+    font-size: max(2rem, 2.5vw);
     position: absolute;
     width: min-content;
     transition: 500ms;

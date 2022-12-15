@@ -35,7 +35,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 #back-button {
   position: fixed;
   top: 5%;
@@ -43,12 +43,15 @@ export default {
   z-index: 100;
   background-color: #1e1e1e !important;
   color: white !important;
+  height: max(36px, 3em) !important;
+  font-size: max(0.875rem, 0.675vw) !important;
+  padding: 0 max(16px, 1.28em) !important;
 }
 .custom-loader {
-  animation: loader 1s infinite;
+  animation: back-button-loader 1s infinite;
   display: flex;
 }
-@-moz-keyframes loader {
+@-moz-keyframes back-button-loader {
   from {
     transform: rotate(0);
   }
@@ -56,7 +59,7 @@ export default {
     transform: rotate(360deg);
   }
 }
-@-webkit-keyframes loader {
+@-webkit-keyframes back-button-loader {
   from {
     transform: rotate(0);
   }
@@ -64,7 +67,7 @@ export default {
     transform: rotate(360deg);
   }
 }
-@-o-keyframes loader {
+@-o-keyframes back-button-loader {
   from {
     transform: rotate(0);
   }
@@ -72,7 +75,7 @@ export default {
     transform: rotate(360deg);
   }
 }
-@keyframes loader {
+@keyframes back-button-loader {
   from {
     transform: rotate(0);
   }
