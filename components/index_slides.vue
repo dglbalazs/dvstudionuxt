@@ -62,6 +62,7 @@
 export default {
   data() {
     return {
+      touchstartX: 0,
       slider: {
         current: 0,
         slides: ['eskuvo', 'ceg', 'rendezveny'],
@@ -113,32 +114,56 @@ export default {
       },
     }
   },
+  created() {
+    window.addEventListener('touchstart', this.touchstart)
+    window.addEventListener('touchend', this.touchend)
+    window.addEventListener('keydown', this.keydown)
+  },
+  beforeDestroy() {
+    window.removeEventListener('touchstart', this.touchstart)
+    window.removeEventListener('touchend', this.touchend)
+    window.removeEventListener('keydown', this.keydown)
+  },
   methods: {
-    navigationResult(direction) {
-      let result
-      if (direction == 'left') {
-        this.slider.current - 1 < 0
-          ? (result = this.slider.maxNumber)
-          : (result = this.slider.current - 1)
-        console.log(result)
-      }
-      if (direction == 'right') {
-        this.slider.current + 1 > this.slider.maxNumber
-          ? (result = 0)
-          : (result = this.slider.current + 1)
-        console.log(result)
-      }
-      return result
+    // Event Handler for Touch Start
+    touchstart(e) {
+      this.touchstartX = e.changedTouches[0].clientX
     },
+
+    // Event Handler for Touch End
+    touchend(e) {
+      let touchstartX = this.touchstartX
+      let touchendX = e.changedTouches[0].clientX
+
+      if (
+        Math.abs(touchstartX - touchendX) <
+        document.documentElement.clientWidth * 0.08
+      )
+        return
+      let direction = touchstartX > touchendX ? 'right' : 'left'
+
+      this.navigation(direction)
+      this.touchstartX = 0
+    },
+
+    // Event Handler for Key Down
+    keydown(e) {
+      //Arrow left
+      if (e.keyCode == 37) this.navigation('left')
+
+      //Arrow right
+      if (e.keyCode == 39) this.navigation('right')
+    },
+
+    // Function to slide to the next slide
     navigation(direction) {
       if (this.slider.slideChange) return
       this.slider.slideChange = true
       this.slider.slideChangeDirection = direction
       this.slider.current = this.navigationResult(direction)
       this.slider.newName = this.slider.slides[this.slider.current].name
-      console.log(this.slider.newName)
+      // console.log(this.slider.newName)
       setTimeout(() => {
-        console.log('asd')
         this.slider.slideChange = false
         this.slider.currentName = this.slider.newName
         this.slider.newName = ''
@@ -147,6 +172,24 @@ export default {
         this.slider.currentBgColor =
           this.slider.slides[this.slider.current].bgcolor
       }, 1200)
+    },
+
+    // Function to determine the next slide
+    navigationResult(direction) {
+      let result
+      if (direction == 'left') {
+        this.slider.current - 1 < 0
+          ? (result = this.slider.maxNumber)
+          : (result = this.slider.current - 1)
+        // console.log(result)
+      }
+      if (direction == 'right') {
+        this.slider.current + 1 > this.slider.maxNumber
+          ? (result = 0)
+          : (result = this.slider.current + 1)
+        // console.log(result)
+      }
+      return result
     },
   },
 }

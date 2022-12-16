@@ -126,6 +126,7 @@ body:has(.slide-up-leave-active) {
       rgba(0, 0, 0, 1) 0%,
       rgba(0, 0, 0, 1) 100%
     );
+    z-index: 4;
   }
 }
 
@@ -199,6 +200,7 @@ body:has(.slide-up-leave-active) {
       rgba(0, 0, 0, 1) 0%,
       rgba(0, 0, 0, 1) 100%
     );
+    z-index: 4;
   }
 }
 

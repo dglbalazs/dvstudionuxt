@@ -24,6 +24,7 @@
         <CcInfoCard></CcInfoCard>
       </v-row>
       <ccSPPhotoCollection></ccSPPhotoCollection>
+      <!-- <CcWeddingPriceCalculator></CcWeddingPriceCalculator> -->
     </div>
     <!-- <CcPhotoimg
       :image="CcPhotoImg1.image"
