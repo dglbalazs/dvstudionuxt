@@ -5,9 +5,9 @@
       height="200px"
     ></v-img> -->
 
-    <v-card-title> Modern technika </v-card-title>
+    <v-card-title>{{ title }}</v-card-title>
 
-    <v-card-subtitle> 2 drónnal felszerelve</v-card-subtitle>
+    <v-card-subtitle>{{ subtitle }}</v-card-subtitle>
 
     <v-card-actions>
       <v-btn color="orange lighten-2" text @click="show = !show">
@@ -25,12 +25,7 @@
       <div v-show="show">
         <v-divider></v-divider>
         <v-card-text>
-          Felszereléseinket mindig igyekszünk a technikai fejlődések mentén
-          korszerűsíteni - így a kameráink mellett 2 drónnal is rendelkezünk,
-          amelyekkel csodás légi felvételek készíthetőek. Nem csak az eszközre
-          van szükség, de a szakmai felkészültségre is, így ezeket hozzáértő és
-          képesített szakemberek kezelik, hazánk légi szabályozásainak
-          megfelelően.
+          {{ content }}
         </v-card-text>
       </div>
     </v-expand-transition>
@@ -44,6 +39,11 @@ export default {
       show: false,
     }
   },
+  props: {
+    title: String,
+    subtitle: String,
+    content: String,
+  },
 }
 </script>
 
@@ -52,8 +52,17 @@ v-card,
 .v-card {
   width: 100%;
   height: min-content;
+  // width: 80vw !important;
+  // max-width: 80vw !important;
   // max-width:344px;
-  @media (min-width: 100em) {
+  max-width: none !important;
+  width: 71vw !important;
+
+  .v-btn--icon {
+    // display: none !important;
+  }
+
+  @media (min-width: 67em) {
     max-width: 22vw !important;
     width: 22vw !important;
 

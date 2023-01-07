@@ -1,12 +1,26 @@
 <template>
   <div>
-    <heading></heading>
-    <Nuxt />
+    <transition name="loading">
+      <LoadingLoader v-if="!initialized"></LoadingLoader>
+    </transition>
+    <heading v-if="initialized"></heading>
+    <Nuxt v-if="initialized" />
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      initialized: false,
+    }
+  },
+  mounted: function () {
+    setTimeout(() => {
+      this.initialized = true
+    }, 1500)
+  },
+}
 </script>
 
 <style lang="scss">
@@ -22,12 +36,6 @@ $ff-ss-4: 'Roboto Condensed', sans-serif;
 $ff-ss-5: 'Roboto Flex', sans-serif;
 $ff-ss-6: 'Open Sans', sans-serif;
 
-body {
-  background: #161616;
-  overflow-x: hidden;
-  /* overflow-y: hidden; */
-}
-
 * {
   $ff-hw-1: 'Reenie Beanie', cursive;
   $ff-hw-2: 'Tangerine', cursive;
@@ -42,12 +50,92 @@ body {
   $ff-ss-6: 'Open Sans', sans-serif;
 }
 
+html:focus-within {
+  scroll-behavior: smooth !important;
+}
+
+body {
+  background: #161616;
+  overflow-x: hidden;
+  /* overflow-y: hidden; */
+}
+
+//---------------------------------------------------------------
+// Custom scrollbar settings
+//---------------------------------------------------------------
+
+html {
+  scrollbar-color: #d4b068 #f1f1f1;
+  scrollbar-width: thin;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4b068 !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4b068;
+}
+
+//---------------------------------------------------------------
+// Selection settings
+//---------------------------------------------------------------
+
+::-moz-selection {
+  /* Code for Firefox */
+  color: rgb(0, 204, 255);
+  text-shadow: 0 0 10px rgb(0, 204, 255);
+  background: rgb(89, 0, 255) rgb(9, 5, 19);
+}
+
+::selection {
+  color: rgb(0, 204, 255);
+  text-shadow: 0 0 10px rgb(0, 204, 255);
+  background: rgb(89, 0, 255) rgb(9, 5, 19);
+}
+
 body:has(.slide-down-enter-active),
 body:has(.slide-up-enter-active),
 body:has(.slide-down-leave-active),
 body:has(.slide-up-leave-active) {
   overflow-y: hidden;
 }
+
+//---------------------------------------------------------------
+//  ANIMATIONS
+//---------------------------------------------------------------
+
+// LOADING START
+
+.loading-enter-active {
+  animation: bounce-in 0.6s reverse;
+}
+
+.loading-leave-active {
+  animation: bounce-in 0.6s;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+// LOADING END
 
 .slide-up-enter-active,
 .slide-up-leave-active,

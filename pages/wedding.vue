@@ -19,11 +19,34 @@
       </v-row>
       <v-divider></v-divider>
       <v-row align="center" justify="space-between" id="page-content_wrapper">
-        <CcInfoCard></CcInfoCard>
-        <CcInfoCard></CcInfoCard>
-        <CcInfoCard></CcInfoCard>
+        <!-- <ccVerticalInfoCard></ccVerticalInfoCard> -->
+
+        <CcInfoCard
+          :title="infoCards.card1.title"
+          :subtitle="infoCards.card1.subtitle"
+          :content="infoCards.card1.content"
+        >
+        </CcInfoCard>
+        <CcInfoCard
+          :title="infoCards.card2.title"
+          :subtitle="infoCards.card2.subtitle"
+          :content="infoCards.card2.content"
+        >
+        </CcInfoCard>
+        <CcInfoCard
+          :title="infoCards.card3.title"
+          :subtitle="infoCards.card3.subtitle"
+          :content="infoCards.card3.content"
+        >
+        </CcInfoCard>
       </v-row>
+      <ccWeddingVideoWatcher></ccWeddingVideoWatcher>
       <ccSPPhotoCollection></ccSPPhotoCollection>
+      <!-- <ccWeddingPriceCalcWindow></ccWeddingPriceCalcWindow> -->
+      <ccWeddingPriceActivator
+        class="price-activator-floating"
+      ></ccWeddingPriceActivator>
+      <ccFooter></ccFooter>
       <!-- <CcWeddingPriceCalculator></CcWeddingPriceCalculator> -->
     </div>
     <!-- <CcPhotoimg
@@ -50,6 +73,26 @@ export default {
         scaleVw: '30vw',
         mobileScaleVw: '50vw',
         minW: '300px',
+      },
+      infoCards: {
+        card1: {
+          title: 'Modern technika',
+          subtitle: '2 drónnal felszerelve',
+          content:
+            'Felszereléseinket mindig igyekszünk a technikai fejlődések mentén korszerűsíteni - így a kameráink mellett 2 drónnal is rendelkezünk, amelyekkel csodás légi felvételek készíthetőek. Nem csak az eszközre van szükség, de a szakmai felkészültségre is, így ezeket hozzáértő és képesített szakemberek kezelik, hazánk légi szabályozásainak megfelelően.',
+        },
+        card2: {
+          title: 'Modern technika',
+          subtitle: '2 drónnal felszerelve',
+          content:
+            'Felszereléseinket mindig igyekszünk a technikai fejlődések mentén korszerűsíteni - így a kameráink mellett 2 drónnal is rendelkezünk, amelyekkel csodás légi felvételek készíthetőek. Nem csak az eszközre van szükség, de a szakmai felkészültségre is, így ezeket hozzáértő és képesített szakemberek kezelik, hazánk légi szabályozásainak megfelelően.',
+        },
+        card3: {
+          title: 'Modern technika',
+          subtitle: '2 drónnal felszerelve',
+          content:
+            'Felszereléseinket mindig igyekszünk a technikai fejlődések mentén korszerűsíteni - így a kameráink mellett 2 drónnal is rendelkezünk, amelyekkel csodás légi felvételek készíthetőek. Nem csak az eszközre van szükség, de a szakmai felkészültségre is, így ezeket hozzáértő és képesített szakemberek kezelik, hazánk légi szabályozásainak megfelelően.',
+        },
       },
     }
   },
@@ -117,6 +160,14 @@ $ff-ss-6: 'Open Sans', sans-serif;
     font-weight: 400;
     gap: 2em;
   }
+
+  .price-activator-floating {
+    position: fixed;
+    right: 5vw;
+    bottom: 10vh;
+    z-index: 999;
+  }
+
   .information-card {
     margin: 0 auto;
     // background: #1e1e1e;

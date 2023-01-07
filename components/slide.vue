@@ -12,7 +12,7 @@
       <p>{{ subtext }}</p>
     </div>
     <div class="pageno">
-      <p>{{ id }} - 3</p>
+      <p>{{ id }} - 4</p>
     </div>
     <div class="maintext" tabindex="0" @click="$emit('slide-selected')">
       <p class="maintext1">{{ maintext1 }}</p>
@@ -20,7 +20,7 @@
     </div>
     <div class="more-section" @click="$emit('slide-selected')">
       <p>
-        Részletesebben
+        {{ ctatext }}
         <span class="more-icon">
           <font-awesome-icon icon="fa-solid fa-arrow-turn-down" />
         </span>
@@ -37,6 +37,7 @@ export default {
     'subtext',
     'maintext1',
     'maintext2',
+    'ctatext',
     'bgcolor',
     'fontcolor',
     'fontcolor2',

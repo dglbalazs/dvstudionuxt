@@ -32,6 +32,7 @@
       :subtext="slide.subtext"
       :maintext1="slide.maintext1"
       :maintext2="slide.maintext2"
+      :ctatext="slide.ctatext"
       :bgcolor="slide.bgcolor"
       :fontcolor="slide.fontcolor"
       :fontcolor2="slide.fontcolor2"
@@ -62,20 +63,32 @@
 export default {
   data() {
     return {
-      touchstartX: 0,
       slider: {
         current: 0,
-        slides: ['eskuvo', 'ceg', 'rendezveny'],
-        currentName: 'eskuvo',
+        slides: ['landing', 'eskuvo', 'ceg', 'rendezveny'],
+        currentName: 'landing',
         newName: '',
-        maxNumber: 2,
+        maxNumber: 3,
         slideChange: false,
         slideChangeDirection: undefined,
-        currentColor: 'hsl(175, 58%, 75%)',
-        currentBgColor: 'hsl(175, 28%, 32%)',
+        currentColor: 'hsl(0, 0%, 75%)',
+        currentBgColor: 'hsl(0, 0%, 9%)',
         slides: [
           {
             id: 1,
+            name: 'landing',
+            subtext: 'Fotó | videó | grafika',
+            maintext1: 'Lapozzon Jobbra',
+            maintext2: 'Vagy Balra',
+            bgcolor: 'hsl(0, 0%, 9%)',
+            fontcolor: 'hsl(0, 0%, 75%)',
+            fontcolor2: 'hsl(0, 0%, 70%)',
+            bgimage: 'https://dvstudio.hu/external/DV_logo_weboldallal.png',
+            backgroundblend: false,
+            ctatext: 'Ismerje meg csapatunkat',
+          },
+          {
+            id: 2,
             name: 'eskuvo',
             subtext: 'Profi Esküvői Csapat',
             maintext1: 'Értjük az egyszeri',
@@ -85,9 +98,10 @@ export default {
             fontcolor2: 'hsl(186, 78%, 70%)',
             bgimage: require('~/assets/media/wedding_bg3.png'),
             backgroundblend: false,
+            ctatext: 'Részletesebben',
           },
           {
-            id: 2,
+            id: 3,
             name: 'ceg',
             subtext: 'Céges Imázs',
             maintext1: 'Új Köntös',
@@ -97,9 +111,10 @@ export default {
             fontcolor2: 'hsl(161, 75%, 75%)',
             bgimage: require('~/assets/media/_ceg_bg2.png'),
             backgroundblend: false,
+            ctatext: 'Részletesebben',
           },
           {
-            id: 3,
+            id: 4,
             name: 'rendezveny',
             subtext: 'Nagyszabású rendezvények',
             maintext1: 'Digitálisan is éld',
@@ -109,43 +124,19 @@ export default {
             fontcolor2: 'hsl(10, 61%, 84%)',
             bgimage: require('~/assets/media/_event_bg3.png'),
             backgroundblend: true,
+            ctatext: 'Részletesebben',
           },
         ],
       },
     }
   },
   created() {
-    window.addEventListener('touchstart', this.touchstart)
-    window.addEventListener('touchend', this.touchend)
     window.addEventListener('keydown', this.keydown)
   },
   beforeDestroy() {
-    window.removeEventListener('touchstart', this.touchstart)
-    window.removeEventListener('touchend', this.touchend)
     window.removeEventListener('keydown', this.keydown)
   },
   methods: {
-    // Event Handler for Touch Start
-    touchstart(e) {
-      this.touchstartX = e.changedTouches[0].clientX
-    },
-
-    // Event Handler for Touch End
-    touchend(e) {
-      let touchstartX = this.touchstartX
-      let touchendX = e.changedTouches[0].clientX
-
-      if (
-        Math.abs(touchstartX - touchendX) <
-        document.documentElement.clientWidth * 0.08
-      )
-        return
-      let direction = touchstartX > touchendX ? 'right' : 'left'
-
-      this.navigation(direction)
-      this.touchstartX = 0
-    },
-
     // Event Handler for Key Down
     keydown(e) {
       //Arrow left
@@ -195,7 +186,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .wrapper {
   width: 100vw;
   min-height: 100vh;

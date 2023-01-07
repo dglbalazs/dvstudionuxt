@@ -51,7 +51,7 @@ nav {
     width: 100%;
 
     .logo {
-      padding: 1em 3em;
+      padding: 1em 1em;
       img {
         width: auto;
         height: clamp(3.5rem, 9vw, 5rem);
