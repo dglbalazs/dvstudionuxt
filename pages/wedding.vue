@@ -1,6 +1,6 @@
 <template>
   <div class="wedding">
-    <CcBackButton></CcBackButton>
+    <CcBackButton destination="/"></CcBackButton>
     <CcHeaderVideo></CcHeaderVideo>
     <div class="subpage-content__wrapper">
       <!-- <v-row align="center" justify="center">

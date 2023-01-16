@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   targert: "static",
-  ssr: false,
+  ssr: true,
   generate :{ 
     fallback : true
   },
@@ -45,7 +45,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/fontawesome.js'
+    '~/plugins/fontawesome.js',
+    '~/plugins/vuetify.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

@@ -20,6 +20,7 @@ export default {
     showPriceCalculator() {
       console.log('showPriceActivator')
       $nuxt.$emit('showPriceCalculator')
+      this.$router.push('/price')
     },
   },
 }

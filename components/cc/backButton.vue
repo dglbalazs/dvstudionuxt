@@ -13,6 +13,7 @@
 
 <script>
 export default {
+  props: ['destination'],
   data() {
     return {
       loader: null,
@@ -25,7 +26,7 @@ export default {
       this[l] = !this[l]
 
       setTimeout(() => {
-        this.$router.push('/')
+        this.$router.push(this.destination)
       }, 600)
       setTimeout(() => (this[l] = false), 3000)
 
