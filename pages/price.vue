@@ -521,9 +521,9 @@ $checkbox-fontsize: max(1.2rem, 1.2dvw);
 .wedding-calculator {
   width: 80%;
   margin-inline: auto;
-  margin-top: 5dvh;
+  margin-top: 5vh;
   overflow: hidden;
-  margin-bottom: 25dvh;
+  margin-bottom: 25vh;
 
   @media (min-width: 45em) {
     position: absolute;
@@ -626,11 +626,11 @@ $checkbox-fontsize: max(1.2rem, 1.2dvw);
   $bgdeg: 152deg;
   position: fixed;
   width: 100dvw;
-  height: 20dvh;
+  height: 20vh;
   bottom: 0px;
   @media (min-width: 45em) {
     width: 40dvw;
-    min-height: 65dvh;
+    min-height: 65vh;
     top: 25vh;
     right: 5dvw;
   }
