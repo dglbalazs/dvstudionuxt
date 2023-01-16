@@ -3,7 +3,7 @@
     <CcBackButton destination="/wedding"></CcBackButton>
     <div class="wedding-calc-page-title">
       <CcText
-        txt="Állítsa össze csomagját"
+        txt="Állítsa össze csomagját!"
         subtxt=""
         light
         center
