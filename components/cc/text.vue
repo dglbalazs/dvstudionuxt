@@ -79,7 +79,7 @@ $ff-ss-6: 'Open Sans', sans-serif;
 
   &[margin-b-mob] {
     @media (max-width: 45em) {
-      margin-top: max(10dvh) !important;
+      margin-top: max(10vh) !important;
     }
   }
 
