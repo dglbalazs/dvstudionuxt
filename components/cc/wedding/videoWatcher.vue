@@ -1,6 +1,6 @@
 <template>
   <v-carousel v-model="model" id="video-watcher">
-    <v-carousel-item v-for="(link, i) in links" :key="link">
+    <v-carousel-item v-for="link in links" :key="link">
       <v-sheet height="100%" tile>
         <v-row class="fill-height" align="center" justify="center">
           <iframe
