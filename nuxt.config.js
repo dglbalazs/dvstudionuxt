@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   targert: "static",
-  ssr: true,
+  ssr: false,
   generate :{ 
     fallback : true
   },
