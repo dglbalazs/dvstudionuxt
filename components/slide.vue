@@ -72,8 +72,8 @@ export default {
   $mobile-grid-row: 0.5fr 0.5fr 0.5fr 1.25fr 0.775fr;
   $mobile-grid-area: '. . . logo' '. arrowleft arrowright .'
     '. pageno subtitle .' '. . title title' '. . more more';
-  width: 100vw;
-  min-height: 100vh;
+  width: 100dvw;
+  min-height: 100dvh;
   display: grid;
   // justify-content: center;
   // justify-items: center;
@@ -133,7 +133,7 @@ export default {
 
     font-family: $ff-ss-6;
     font-weight: 200;
-    font-size: max(2.3rem, 3.7vw);
+    font-size: max(2.3rem, 3.7dvw);
     letter-spacing: -0.015em;
 
     color: var(--font-color);
@@ -141,7 +141,7 @@ export default {
     text-transform: capitalize;
     vertical-align: text-top;
     width: max-content;
-    max-width: 66vw;
+    max-width: 66dvw;
     width: 100%;
     line-height: 1.225;
     position: relative;
@@ -165,7 +165,7 @@ export default {
 
     font-family: $ff-ss-2;
     font-weight: 100;
-    font-size: max(0.85rem, 1.5vw);
+    font-size: max(0.85rem, 1.5dvw);
     line-height: 1.5rem;
 
     color: var(--font-color);
@@ -180,7 +180,7 @@ export default {
   .more-section {
     grid-area: more;
     color: var(--font-color);
-    font-size: max(1rem, 1.3vw);
+    font-size: max(1rem, 1.3dvw);
     font-family: $ff-ss-6;
     padding: 2em 0;
     letter-spacing: 0.3em;
@@ -202,7 +202,7 @@ export default {
         translate: 0;
       }
       .more-icon {
-        font-size: clamp(0.8rem, 1.2vw, 3rem);
+        font-size: clamp(0.8rem, 1.2dvw, 3rem);
         svg {
           animation: bounce 2s ease infinite;
         }

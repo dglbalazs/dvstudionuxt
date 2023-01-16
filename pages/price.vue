@@ -13,6 +13,7 @@
         doubleline
         letterspace
         padding-m
+        margin-b-mob
       ></CcText>
     </div>
     <div class="wedding-calculator">
@@ -55,7 +56,13 @@
               class="text-center item-title"
               @click="toggle(item.calc_id, item.type, item.vmodel)"
             >
-              {{ item.title }}
+              <div class="item-title__name">{{ item.title }}</div>
+              <div class="item-title__price">
+                {{
+                  item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') +
+                  ' HUF'
+                }}
+              </div>
             </v-card-text>
             <!-- ----------------- -->
             <!-- NUMBER TYPE -->
@@ -124,7 +131,15 @@
           calculation_total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') +
           ' HUF'
         "
-        subtxt=""
+        :subtxt="
+          calculation_discount_to_show != 0
+            ? 'Kedvezmény: ' +
+              calculation_discount_to_show
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ' ') +
+              ' HUF'
+            : ''
+        "
         light
         center
         big
@@ -245,9 +260,11 @@ export default {
       this.calculateSubTotal()
       this.calculateDiscount()
       this.calculateTotal()
+      this.calculateFinalDiscount()
     },
     calculateSubTotal() {
       this.calculation_subtotal = 0
+      this.calculation_other_discounts = 0
       Object.keys(this.items).forEach((key) => {
         const item = this.items[key]
         const item_type = item.type
@@ -275,6 +292,8 @@ export default {
             this.calculation_subtotal += price
           } else if (value == 2) {
             this.calculation_subtotal += price * 2
+            if (item.price_2_discount)
+              this.calculation_other_discounts += item.price_2_discount
           }
         }
       })
@@ -305,8 +324,13 @@ export default {
 
     calculateTotal() {
       this.calculation_total =
-        this.calculation_subtotal -
-        this.calculation_subtotal * this.calculation_discount
+        this.calculation_subtotal * (1 - this.calculation_discount) -
+        this.calculation_other_discounts
+    },
+
+    calculateFinalDiscount() {
+      this.calculation_discount_to_show =
+        this.calculation_total - this.calculation_subtotal
     },
   },
   data() {
@@ -319,6 +343,8 @@ export default {
       calculation_subtotal: 0,
       calculation_discount: 0,
       calculation_total: 0,
+      calculation_other_discounts: 0,
+      calculation_discount_to_show: 0,
       items: {
         szertartas_foto: {
           id: 1,
@@ -359,6 +385,7 @@ export default {
           vmodel: 'szertartas_video_4k',
           option_4k: true,
           price: 100000,
+          price_2_discount: 50000,
           option_4k_price: 35000,
           category: 'category2',
         },
@@ -522,6 +549,10 @@ $checkbox-fontsize: max(1.2rem, 1.2dvw);
     }
     .item-title {
       font-size: $title-fontsize;
+
+      .item-title__price {
+        color: grey;
+      }
     }
 
     .checkbox4k {

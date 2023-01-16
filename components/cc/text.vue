@@ -77,6 +77,12 @@ $ff-ss-6: 'Open Sans', sans-serif;
     padding: max(16px, 1.15em) !important;
   }
 
+  &[margin-b-mob] {
+    @media (max-width: 45em) {
+      margin-top: max(10dvh) !important;
+    }
+  }
+
   &[ss1] {
     font-family: $ff-ss-1;
   }
