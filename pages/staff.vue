@@ -167,11 +167,12 @@ $ff-ss-6: 'Open Sans', sans-serif;
 
     .staff_name {
       position: absolute;
-      top: 15vh;
+      top: 55vh;
       left: 7.5vw;
       //   transform: translateX(-50%);
       //   border: 1px solid pink;
       @media (orientation: landscape) and (min-width: 50em) {
+        top: 15vh;
         left: 25vw;
       }
     }

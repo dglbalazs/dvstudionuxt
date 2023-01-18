@@ -59,7 +59,7 @@ $ff-ss-6: 'Open Sans', sans-serif;
   }
 
   &[biggest] {
-    font-size: max(5vw, 3.3rem);
+    font-size: max(5.7vmax, 3.7rem);
   }
 
   &[superbig] {
