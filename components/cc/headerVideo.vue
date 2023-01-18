@@ -8,10 +8,10 @@
         muted
         playsinline
         webkit-playsinline
-        asrc="~/assets/media/eskuvo.mp4"
+        :asrc="videoSrc"
         class="w-full h-full object-cover"
       >
-        <source src="~/assets/media/eskuvo.mp4" type="video/mp4" />
+        <source :src="videoSrc" type="video/mp4" />
         <!-- <source src="~/assets/media/hero_bg_720p_bw.webm" type="video/webm" /> -->
       </video>
     </div>
@@ -20,7 +20,9 @@
 </template>
 
 <script>
-export default {}
+export default {
+  props: ['videoSrc'],
+}
 </script>
 
 <style lang="scss">

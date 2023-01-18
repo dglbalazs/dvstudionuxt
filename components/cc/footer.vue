@@ -4,7 +4,7 @@
       <v-card-text>
         <v-btn
           v-for="icon in icons"
-          :key="icon"
+          :key="icon[0]"
           class="mx-4 white--text"
           icon
           :href="icon[1]"

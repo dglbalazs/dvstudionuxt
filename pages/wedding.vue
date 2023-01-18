@@ -1,7 +1,9 @@
 <template>
   <div class="wedding level2">
     <CcBackButton destination="/"></CcBackButton>
-    <CcHeaderVideo></CcHeaderVideo>
+    <CcHeaderVideo
+      :videoSrc="require('~/assets/media/eskuvo720.mp4')"
+    ></CcHeaderVideo>
     <div class="subpage-content__wrapper">
       <!-- <v-row align="center" justify="center">
         <v-col class="text-center" id="page-header" cols="12">
@@ -41,7 +43,10 @@
         </CcInfoCard>
       </v-row>
       <ccWeddingVideoWatcher></ccWeddingVideoWatcher>
-      <ccSPPhotoCollection></ccSPPhotoCollection>
+      <ccSPPhotoCollection
+        :images="images"
+        :pagemiddletext="pagemiddletext"
+      ></ccSPPhotoCollection>
       <!-- <ccWeddingPriceCalcWindow></ccWeddingPriceCalcWindow> -->
       <ccWeddingPriceActivator
         class="price-activator-floating"
@@ -76,24 +81,68 @@ export default {
       },
       infoCards: {
         card1: {
-          title: 'Modern technika',
-          subtitle: '2 drónnal felszerelve',
+          title: 'Szolgáltatások egy kézben',
+          subtitle: 'Fotó - Videó - Cinematográfia',
           content:
-            'Felszereléseinket mindig igyekszünk a technikai fejlődések mentén korszerűsíteni - így a kameráink mellett 2 drónnal is rendelkezünk, amelyekkel csodás légi felvételek készíthetőek. Nem csak az eszközre van szükség, de a szakmai felkészültségre is, így ezeket hozzáértő és képesített szakemberek kezelik, hazánk légi szabályozásainak megfelelően.',
+            'Stúdiónk külön és együttesen is vállal fotó és videó szolgáltatásokat, így eldönthetitek, hogy esküvőtökön egy összeszokott stábként legyünk jelen, vagy csak külön valamelyik szolgáltatásunkkal. Ne aggódjatok, ha úgy döntötök, szívesen dolgozunk együtt más szolgáltatókkal is, mindig rugalmasságra és egymás segítésére törekszünk, hiszen Értetek vagyunk!',
         },
         card2: {
-          title: 'Modern technika',
-          subtitle: '2 drónnal felszerelve',
+          title: 'Az egyediség útján',
+          subtitle: 'Trendek fúziója',
           content:
-            'Felszereléseinket mindig igyekszünk a technikai fejlődések mentén korszerűsíteni - így a kameráink mellett 2 drónnal is rendelkezünk, amelyekkel csodás légi felvételek készíthetőek. Nem csak az eszközre van szükség, de a szakmai felkészültségre is, így ezeket hozzáértő és képesített szakemberek kezelik, hazánk légi szabályozásainak megfelelően.',
+            'Nálunk nem csak kulcsszó az egyediség.  Már az ajánlattól  egészen a kész anyag átadásáig azon leszünk, hogy személyre szabjunk Számotokra minden szolgáltatást, úgy hogy az leginkább a Ti egyéniségeteket tükrözze. Csapatunk fiatalos, és humoros stílusa hamar feloldja még az izgulósabb párok hangulatát is. Napjaink esküvői trendjeit pedig az egyediség ötvözésével, sok éves szakmai tapasztalattal és modern eszközparkunkkal igyekszünk megvalósítani számotokra.',
         },
         card3: {
-          title: 'Modern technika',
-          subtitle: '2 drónnal felszerelve',
+          title: 'Garanciák',
+          subtitle: 'Több, mint 100 esküvő margójára',
           content:
-            'Felszereléseinket mindig igyekszünk a technikai fejlődések mentén korszerűsíteni - így a kameráink mellett 2 drónnal is rendelkezünk, amelyekkel csodás légi felvételek készíthetőek. Nem csak az eszközre van szükség, de a szakmai felkészültségre is, így ezeket hozzáértő és képesített szakemberek kezelik, hazánk légi szabályozásainak megfelelően.',
+            'Ha egy dolgot kéne kiemelni Stúdiónkkal kapcsolatban, amire büszkék vagyunk, akkor az a megbízhatóság. Számunkra nincs ennél fontosabb, mint ennek garantálása. Éppen ezért is tartjuk fontosnak minőség garanciánkat is. Nálunk az ügyfél csak olyanért fizet, amit előzetesen már látott. Így az esküvő napján semmiképpen sem fogadunk el Tőletek pénzt. Az egyedüli összeg, mely előre fizetendő, az a foglaló összeg, mely a szolgálatási ár 20%-a, és szerződéskötéskor fizetendő.',
         },
       },
+      pagemiddletext: {
+        middleText: 'Mi tudjuk, hogy nincs két egyforma esküvő',
+        subText:
+          'ezért miután kinéztétek a Hozzátok illő csomagajánlatunkat, mi azt személyre szabjuk Nektek, hogy olyan szépen és kifinomultan illeszkedjen Hozzátok, mint az esküvői ruhátok',
+      },
+      images: [
+        {
+          //https://drive.google.com/uc?export=view&id=1uChRHboKVRowqPLJydEyjEmE8klfdGpT
+          src: 'https://dvstudio.hu/external/eskuvo_1_medium.jpg',
+          // lazysrc:
+          //   'https://lh5.googleusercontent.com/StXWmS0mwwlnJJdJ3rv8tPP7gHjSlr--2m2sruESeDoGzKxJRe7uAYbY09XpFH6b1J4=w100',
+          alt: 'Image 1',
+        },
+        {
+          src: 'https://dvstudio.hu/external/eskuvo_2_medium.jpg',
+          // lazysrc:
+          //   'https://lh5.googleusercontent.com/UjXSS_VNfdHmKhvUYOU0duZQ3McqUzy7yU_k0y0wM1ABoLYSUF1oFyCHfN9Yp3BN2sQ=w100',
+          alt: 'Image 2',
+        },
+        {
+          src: 'https://dvstudio.hu/external/eskuvo_3_medium.jpg',
+          // lazysrc:
+          //   'https://lh5.googleusercontent.com/fxVNbuRxmKri9JPXY28zTzK_J56BqqgWnW7gG_f0Bu-jn0wtfW3duJeNdj7POfVIQp0=w100',
+          alt: 'Image 3',
+        },
+        {
+          src: 'https://dvstudio.hu/external/eskuvo_4_medium.jpg',
+          // lazysrc:
+          //   'https://lh5.googleusercontent.com/oyXiU5XdU5icWt6MmdS9OSW_VRMP9eLdd-KyKqZhNJtMbQuRsRdJVW6STK0NDEcYSxg=w100',
+          alt: 'Image 4',
+        },
+        {
+          src: 'https://dvstudio.hu/external/eskuvo_5_medium.jpg',
+          // lazysrc:
+          //   'https://lh5.googleusercontent.com/mndg6fEBIt38d5NJWBADb-vhkgM9qoiS_hRmEkPUrmnjvcFV4XBlVQK81Jvj9wcgK6Y=w100',
+          alt: 'Image 5',
+        },
+        {
+          src: 'https://dvstudio.hu/external/eskuvo_6_medium.jpg',
+          // lazysrc:
+          //   'https://lh6.googleusercontent.com/Cr7bF1vEj6CoIoanQmvotxkdPtVpe4hqe-6mDGo5bM08quxE2JJJwzd-Y4GCxcmMtoQ=w100',
+          alt: 'Image 6',
+        },
+      ],
     }
   },
 }

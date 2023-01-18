@@ -34,9 +34,11 @@
       :ctatext="slide.ctatext"
       :bgcolor="slide.bgcolor"
       :fontcolor="slide.fontcolor"
+      :subcolor="slide.subcolor"
       :fontcolor2="slide.fontcolor2"
       :bgimage="slide.bgimage"
       :backgroundblend="slide.backgroundblend"
+      :subtext_different="slide.subtext_different"
       :ctaUrl="slide.ctaUrl"
       :class="{
         visible:
@@ -77,14 +79,16 @@ export default {
           {
             id: 1,
             name: 'landing',
-            subtext: 'Fotó | videó | grafika',
-            maintext1: 'Lapozzon Jobbra',
-            maintext2: 'Vagy Balra',
+            subtext: 'Lapozzon jobbra vagy balra',
+            maintext1: 'Fotó | Videó',
+            maintext2: 'stúdió',
             bgcolor: 'hsl(0, 0%, 9%)',
             fontcolor: 'hsl(0, 0%, 75%)',
+            subcolor: 'hsl(0, 0%, 75%)',
             fontcolor2: 'hsl(0, 0%, 70%)',
             bgimage: 'https://dvstudio.hu/external/DV_logo_weboldallal.png',
             backgroundblend: false,
+            subtext_different: false,
             ctatext: 'Ismerje meg csapatunkat',
             ctaUrl: '/staff',
           },
@@ -96,9 +100,11 @@ export default {
             maintext2: 'Pillanatok Fontosságát.',
             bgcolor: 'hsl(175, 28%, 32%)',
             fontcolor: 'hsl(175, 58%, 75%)',
+            subcolor: 'hsl(175, 58%, 75%)',
             fontcolor2: 'hsl(186, 78%, 70%)',
-            bgimage: require('~/assets/media/wedding_bg3.png'),
+            bgimage: require('~/assets/media/wedding_bg4.png'),
             backgroundblend: false,
+            subtext_different: false,
             ctatext: 'Részletesebben',
             ctaUrl: '/wedding',
           },
@@ -110,9 +116,11 @@ export default {
             maintext2: 'A Márkádnak.',
             bgcolor: 'hsl(150, 28%, 32%)',
             fontcolor: 'hsl(150, 58%, 75%)',
+            subcolor: 'hsl(150, 58%, 45%)',
             fontcolor2: 'hsl(161, 75%, 75%)',
-            bgimage: require('~/assets/media/_ceg_bg2.png'),
-            backgroundblend: false,
+            bgimage: require('~/assets/media/_ceg_bg4.png'),
+            backgroundblend: true,
+            subtext_different: true,
             ctatext: 'Részletesebben',
             ctaUrl: '/branding',
           },
@@ -124,9 +132,11 @@ export default {
             maintext2: 'újra az élményt.',
             bgcolor: 'hsl(2, 28%, 32%)',
             fontcolor: 'hsl(2, 41%, 84%)',
+            subcolor: 'hsl(2, 41%, 84%)',
             fontcolor2: 'hsl(10, 61%, 84%)',
             bgimage: require('~/assets/media/_event_bg3.png'),
             backgroundblend: true,
+            subtext_different: false,
             ctatext: 'Részletesebben',
             ctaUrl: '/events',
           },
@@ -134,8 +144,16 @@ export default {
       },
     }
   },
+  computed: {
+    ActiveSlide() {
+      return this.$store.getters['slide/getSlide']
+    },
+  },
   created() {
+    let currentStore = this.ActiveSlide
     window.addEventListener('keydown', this.keydown)
+    this.slider.current = currentStore.current
+    this.slider.currentName = currentStore.currentName
   },
   beforeDestroy() {
     window.removeEventListener('keydown', this.keydown)
@@ -166,6 +184,10 @@ export default {
           this.slider.slides[this.slider.current].fontcolor
         this.slider.currentBgColor =
           this.slider.slides[this.slider.current].bgcolor
+        this.$store.commit('slide/setSlide', {
+          current: this.slider.current,
+          currentName: this.slider.currentName,
+        })
       }, 1200)
     },
 

@@ -4,6 +4,7 @@
     :style="{
       '--bg-color': bgcolor,
       '--font-color': fontcolor,
+      '--sub-color': subcolor,
       '--font-color2': fontcolor2,
       backgroundImage: `url(${bgimage})`,
     }"
@@ -20,7 +21,9 @@
       @click="$nuxt.$emit('slideSelect', ctaUrl)"
     >
       <p class="maintext1">{{ maintext1 }}</p>
-      <p class="maintext2">{{ maintext2 }}</p>
+      <p :class="['maintext2', { emphasized: subtext_different }]">
+        {{ maintext2 }}
+      </p>
     </div>
     <div class="more-section" @click="$nuxt.$emit('slideSelect', ctaUrl)">
       <p>
@@ -44,9 +47,12 @@ export default {
     'ctatext',
     'bgcolor',
     'fontcolor',
+    'subcolor',
     'fontcolor2',
     'bgimage',
+    'subtext_different',
     'backgroundblend',
+    'subtext_different',
     'ctaUrl',
   ],
 }
@@ -162,6 +168,10 @@ export default {
       color: black;
       padding: 0.4em 1.25em;
       translate: 0;
+    }
+    .maintext2.emphasized {
+      color: var(--sub-color) !important;
+      -webkit-text-fill-color: var(--sub-color) !important;
     }
   }
 

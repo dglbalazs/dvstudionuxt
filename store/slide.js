@@ -1,15 +1,21 @@
 export const state = () => ({
     // Initial state for the user module
-    Slide: {
+    ActiveSlide: {
         current: 0,
-        currentName: 'eskuvo',
+        currentName: 'landing',
     }
   })
   
+  export const getters = {
+    getSlide(state) {
+      return state.ActiveSlide
+    }
+  }
+
   export const mutations = {
     // Mutation for setting the Slide
     setSlide(state, Slide) {
-      state.Slide = Slide
+      state.ActiveSlide = Slide
     }
   }
   

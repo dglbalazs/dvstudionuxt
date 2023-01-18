@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto" max-width="344" dark>
+  <v-card class="mx-auto info-card" max-width="344" dark>
     <!-- <v-img
       src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
       height="200px"
@@ -47,9 +47,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-v-card,
-.v-card {
+<style lang="scss">
+.info-card {
   width: 100%;
   height: min-content;
   // width: 80vw !important;
@@ -88,12 +87,11 @@ v-card,
         }
       }
     }
-
-    .v-card__text {
-      font-size: max(0.875rem, 0.675vw) !important;
-      padding: max(16px, 1.15em) !important;
-      line-height: 1.6;
-    }
+  }
+  .v-card__text {
+    font-size: max(0.875rem, 0.675vw) !important;
+    padding: max(16px, 1.15em) !important;
+    line-height: 2.2 !important;
   }
 }
 </style>

@@ -22,7 +22,7 @@
         light
         center
         biggest
-        ss3
+        ss6
         bold
         doubleline
         letterspace-big
