@@ -165,6 +165,13 @@
 
 <script>
 export default {
+  transition(to, from) {
+    if (!from) {
+      return 'slide-down'
+    }
+    console.log(to.path, from.path)
+    return to.path < from.path ? 'slide-up' : 'slide-down'
+  },
   methods: {
     addone(item, max) {
       if (this.calculation_current[item] >= max) return

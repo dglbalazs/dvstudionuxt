@@ -1,6 +1,6 @@
 <template>
   <div
-    class="wrapper"
+    class="wrapper level1"
     :style="{
       '--current-font-color': slider.currentColor,
       '--current-bg-color': slider.currentBgColor,
@@ -26,7 +26,6 @@
     <!-- Dynamically create slides -->
     <slide
       v-for="(slide, index) in slider.slides"
-      @slide-selected="$emit('slide-selected')"
       :key="index"
       :id="slide.id"
       :subtext="slide.subtext"
@@ -38,6 +37,7 @@
       :fontcolor2="slide.fontcolor2"
       :bgimage="slide.bgimage"
       :backgroundblend="slide.backgroundblend"
+      :ctaUrl="slide.ctaUrl"
       :class="{
         visible:
           slider.currentName == slide.name || slider.newName == slide.name,
@@ -86,6 +86,7 @@ export default {
             bgimage: 'https://dvstudio.hu/external/DV_logo_weboldallal.png',
             backgroundblend: false,
             ctatext: 'Ismerje meg csapatunkat',
+            ctaUrl: '/staff',
           },
           {
             id: 2,
@@ -99,6 +100,7 @@ export default {
             bgimage: require('~/assets/media/wedding_bg3.png'),
             backgroundblend: false,
             ctatext: 'Részletesebben',
+            ctaUrl: '/wedding',
           },
           {
             id: 3,
@@ -112,6 +114,7 @@ export default {
             bgimage: require('~/assets/media/_ceg_bg2.png'),
             backgroundblend: false,
             ctatext: 'Részletesebben',
+            ctaUrl: '/branding',
           },
           {
             id: 4,
@@ -125,6 +128,7 @@ export default {
             bgimage: require('~/assets/media/_event_bg3.png'),
             backgroundblend: true,
             ctatext: 'Részletesebben',
+            ctaUrl: '/events',
           },
         ],
       },

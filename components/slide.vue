@@ -14,11 +14,15 @@
     <div class="pageno">
       <p>{{ id }} - 4</p>
     </div>
-    <div class="maintext" tabindex="0" @click="$emit('slide-selected')">
+    <div
+      class="maintext"
+      tabindex="0"
+      @click="$nuxt.$emit('slideSelect', ctaUrl)"
+    >
       <p class="maintext1">{{ maintext1 }}</p>
       <p class="maintext2">{{ maintext2 }}</p>
     </div>
-    <div class="more-section" @click="$emit('slide-selected')">
+    <div class="more-section" @click="$nuxt.$emit('slideSelect', ctaUrl)">
       <p>
         {{ ctatext }}
         <span class="more-icon">
@@ -43,6 +47,7 @@ export default {
     'fontcolor2',
     'bgimage',
     'backgroundblend',
+    'ctaUrl',
   ],
 }
 </script>

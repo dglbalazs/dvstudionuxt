@@ -37,6 +37,11 @@ $ff-ss-6: 'Open Sans', sans-serif;
 
 .simple-custom-text {
   font-weight: 200;
+
+  &[fitcontent] {
+    width: fit-content;
+  }
+
   &[light] {
     color: #fff;
   }
@@ -47,6 +52,14 @@ $ff-ss-6: 'Open Sans', sans-serif;
 
   &[center] {
     text-align: center;
+  }
+
+  &[right] {
+    text-align: right;
+  }
+
+  &[biggest] {
+    font-size: max(4.5vw, 3rem);
   }
 
   &[superbig] {
@@ -135,6 +148,14 @@ $ff-ss-6: 'Open Sans', sans-serif;
     letter-spacing: 0.1em;
   }
 
+  &[letterspace-medium] {
+    letter-spacing: 0.25em;
+  }
+
+  &[letterspace-big] {
+    letter-spacing: 0.5em;
+  }
+
   &[bordercorner] {
     --b: 0.15rem; /* thickness of the border */
     --c: rgba(255, 255, 255, 1); /* color of the border */
@@ -160,6 +181,31 @@ $ff-ss-6: 'Open Sans', sans-serif;
         0 100% / var(--_p),
       conic-gradient(from -90deg at bottom var(--b) right var(--b), var(--_g))
         100% 100% / var(--_p);
+  }
+
+  &[stroke-dark] {
+    -webkit-text-fill-color: rgba(255, 255, 255, 0);
+    -webkit-text-stroke: 2px black;
+  }
+
+  &[stroke-light] {
+    -webkit-text-fill-color: rgba(0, 0, 0, 0);
+    -webkit-text-stroke: 1px white;
+  }
+
+  &[stroke-blueneon] {
+    -webkit-text-fill-color: rgba(0, 0, 0, 0);
+    -webkit-text-stroke: 1px white;
+  }
+
+  &[neonText] {
+    text-shadow: 0 0 7px #fff, 0 0 10px #161616, 0 0 21px #161616,
+      0 0 42px #211ebb85, 0 0 82px #0d0c4e, 0 0 92px #211ebb85,
+      0 0 102px #211ebb85, 0 0 151px #211ebb85;
+  }
+
+  &[shadow-dark] {
+    text-shadow: 0.15em 0.15em 0 rgba(0, 0, 0, 0.3);
   }
 
   .simple-custom-text__subtext {

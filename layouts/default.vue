@@ -15,10 +15,18 @@ export default {
       initialized: false,
     }
   },
+  created() {
+    this.$nuxt.$on('slideSelect', ($event) => this.slideSelected($event))
+  },
   mounted: function () {
     setTimeout(() => {
       this.initialized = true
     }, 1500)
+  },
+  methods: {
+    slideSelected(ctaUrl) {
+      this.$router.push(ctaUrl)
+    },
   },
 }
 </script>
@@ -160,7 +168,7 @@ body:has(.slide-up-leave-active) {
 
 // Slide down animation for the index page
 .slide-down-leave-active {
-  .wrapper {
+  .level1 {
     // transition: all 2s;
     &::after {
       $transition-time: 0.75s;
@@ -184,21 +192,21 @@ body:has(.slide-up-leave-active) {
 }
 
 .slide-down-leave-from {
-  .wrapper::after {
+  .level1::after {
     translate: 0 100%;
   }
 }
 
 .slide-down-leave-to {
-  .wrapper::after {
+  .level1::after {
     translate: 0 0;
   }
 }
 
-// Slide down enter animation for the wedding page
+// Slide down enter animation for the level2 page
 
 .slide-down-enter-active {
-  &.wedding::after {
+  &.level2::after {
     $transition-time: 0.75s;
     $transition-function: cubic-bezier(0.86, 0, 0.07, 1);
     content: '';
@@ -219,13 +227,13 @@ body:has(.slide-up-leave-active) {
 }
 
 .slide-down-enter-from {
-  &.wedding::after {
+  &.level2::after {
     translate: 0 0;
   }
 }
 
 .slide-down-enter-to {
-  &.wedding::after {
+  &.level2::after {
     translate: 0 -100%;
   }
 }
@@ -234,7 +242,7 @@ body:has(.slide-up-leave-active) {
 
 // Slide up enter animation for the index page
 .slide-up-enter-active {
-  .wrapper {
+  .level1 {
     // transition: all 2s;
     &::after {
       $transition-time: 0.75s;
@@ -258,21 +266,21 @@ body:has(.slide-up-leave-active) {
 }
 
 .slide-up-enter-from {
-  .wrapper::after {
+  .level1::after {
     translate: 0 0%;
   }
 }
 
 .slide-up-enter-to {
-  .wrapper::after {
+  .level1::after {
     translate: 0 100%;
   }
 }
 
-// Slide up leave animation for the wedding page
+// Slide up leave animation for the level2 page
 
 .slide-up-leave-active {
-  &.wedding::after {
+  &.level2::after {
     $transition-time: 0.75s;
     $transition-function: cubic-bezier(0.86, 0, 0.07, 1);
     content: '';
@@ -293,13 +301,13 @@ body:has(.slide-up-leave-active) {
 }
 
 .slide-up-leave-from {
-  &.wedding::after {
+  &.level2::after {
     translate: 0 -100%;
   }
 }
 
 .slide-up-leave-to {
-  &.wedding::after {
+  &.level2::after {
     translate: 0 0%;
   }
 }

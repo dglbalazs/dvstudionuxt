@@ -1,5 +1,5 @@
 <template>
-  <div class="wedding">
+  <div class="wedding level2">
     <CcBackButton destination="/"></CcBackButton>
     <CcHeaderVideo></CcHeaderVideo>
     <div class="subpage-content__wrapper">
