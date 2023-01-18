@@ -162,6 +162,7 @@ $ff-ss-6: 'Open Sans', sans-serif;
       left: 50%;
       transform: translateX(-50%);
       height: 80vh;
+      object-fit: cover;
     }
 
     .staff_name {
