@@ -108,12 +108,15 @@ $ff-ss-5: 'Roboto Flex', sans-serif;
 $ff-ss-6: 'Open Sans', sans-serif;
 
 .staff {
+  display: grid;
+  grid-template-areas: 'staffmember';
   overflow-y: hidden;
   hr {
     // margin: 1em 0;
     border-color: rgba(255, 255, 255, 0.527);
   }
   .subpage-content__wrapper {
+    grid-area: staffmember;
     &.inactive {
       transition: 550ms;
       opacity: 0;
