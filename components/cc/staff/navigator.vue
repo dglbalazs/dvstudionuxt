@@ -1,17 +1,20 @@
 <template>
   <div id="staff-navigator">
-    <div
-      :class="['navbox', 'clr-green', staffselect == 1 ? 'activated' : '']"
-      @click="$nuxt.$emit('staff-select', 1)"
-    ></div>
-    <div
-      :class="['navbox', 'clr-blue', staffselect == 2 ? 'activated' : '']"
-      @click="$nuxt.$emit('staff-select', 2)"
-    ></div>
-    <div
-      :class="['navbox', 'clr-red', staffselect == 3 ? 'activated' : '']"
-      @click="$nuxt.$emit('staff-select', 3)"
-    ></div>
+    <div class="navbox-container" @click="$nuxt.$emit('staff-select', 1)">
+      <div
+        :class="['navbox', 'clr-green', staffselect == 1 ? 'activated' : '']"
+      ></div>
+    </div>
+    <div class="navbox-container" @click="$nuxt.$emit('staff-select', 2)">
+      <div
+        :class="['navbox', 'clr-blue', staffselect == 2 ? 'activated' : '']"
+      ></div>
+    </div>
+    <div class="navbox-container" @click="$nuxt.$emit('staff-select', 3)">
+      <div
+        :class="['navbox', 'clr-red', staffselect == 3 ? 'activated' : '']"
+      ></div>
+    </div>
   </div>
 </template>
 
@@ -37,7 +40,28 @@ export default {
   @media (orientation: landscape) and (min-width: 50em) {
     flex-direction: row;
   }
-  gap: 8vmax;
+  gap: 5.5vmax;
+}
+
+.navbox-container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  @media (orientation: landscape) and (min-width: 50em) {
+    align-items: end;
+  }
+  --container-dimensions: 10vmin;
+  //   border: 1px solid pink;
+  width: var(--container-dimensions);
+  height: var(--container-dimensions);
+
+  &:hover {
+    cursor: pointer;
+    .navbox {
+      background-color: var(--color);
+      scale: 1.2;
+    }
+  }
 }
 .navbox {
   --dimensions: 4.5vmin;
