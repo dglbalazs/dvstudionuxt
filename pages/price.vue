@@ -425,11 +425,11 @@ export default {
           option_4k_price: 0,
           category: 'category1',
         },
-        eljegyzes_foto: {
+        jegyes_foto: {
           id: 4,
           icon: 'mdi-camera',
-          title: 'Eljegyzés Fotózás',
-          calc_id: 'eljegyzes_foto',
+          title: 'Jegyes Fotózás',
+          calc_id: 'jegyes_foto',
           type: 'boolean',
           min: 0,
           max: 2,
@@ -470,7 +470,7 @@ export default {
         jegyes_video: {
           id: 9,
           icon: 'mdi-video',
-          title: 'Eljegyzési Videó',
+          title: 'Jegyes Videó',
           calc_id: 'jegyes_video',
           type: 'boolean',
           min: 0,
@@ -500,7 +500,7 @@ export default {
         szertartas_foto: 0,
         lakodalom_foto: false,
         kreativ_foto: false,
-        eljegyzes_foto: false,
+        jegyes_foto: false,
         szertartas_video: 0,
         szertartas_video_4k: false,
         lakodalom_video: false,
@@ -631,18 +631,23 @@ $checkbox-fontsize: max(1.2rem, 1.2dvw);
   $bgcolor2: hsl(202, 58%, 58%) 50%;
   $bgcolor3: hsl(201, 62%, 37%) 100%;
   $bgdeg: 152deg;
+  $dvstudioclr: #d4b068;
+  $dvstudiobg: #161616;
   position: fixed;
   width: 100dvw;
   height: 20vh;
   bottom: 0px;
+  border-top: 2px solid $dvstudioclr;
+  background: $dvstudiobg;
   @media (min-width: 45em) {
+    border: 2px solid $dvstudioclr;
     width: 40dvw;
     min-height: 65vh;
     top: 25vh;
     right: 5dvw;
   }
 
-  background: linear-gradient($bgdeg, $bgcolor1, $bgcolor2, $bgcolor3);
+  // background: linear-gradient($bgdeg, $bgcolor1, $bgcolor2, $bgcolor3);
   display: flex;
   flex-direction: column;
   justify-content: center;

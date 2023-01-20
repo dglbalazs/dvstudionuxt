@@ -1,9 +1,7 @@
-<template>
-  <div>Asd</div>
-</template>
-
 <script>
-export default {}
+export default {
+  fetch({ redirect }) {
+    return redirect('/')
+  },
+}
 </script>
-
-<style></style>

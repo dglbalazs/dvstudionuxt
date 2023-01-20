@@ -4,6 +4,15 @@
     <div class="simple-custom-text__subtext" v-if="subtxt != ''">
       {{ subtxt }}
     </div>
+    <div class="simple-custom-text__subtext mt-12" v-if="listtxt != []">
+      <div
+        class="border-b-white border-opacity-10 border-b mb-6 p-3"
+        v-for="(list, index) in listtxt"
+        :key="index"
+      >
+        {{ list }}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -17,6 +26,10 @@ export default {
     subtxt: {
       type: String,
       default: '',
+    },
+    listtxt: {
+      type: Array,
+      default: () => [],
     },
   },
 }

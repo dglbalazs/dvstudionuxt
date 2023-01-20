@@ -23,6 +23,7 @@
       <font-awesome-icon icon="fa-solid fa-circle-right" />
     </div>
 
+    <!-- <ccHelperBackground1></ccHelperBackground1> -->
     <!-- Dynamically create slides -->
     <slide
       v-for="(slide, index) in slider.slides"
@@ -36,6 +37,8 @@
       :fontcolor="slide.fontcolor"
       :subcolor="slide.subcolor"
       :fontcolor2="slide.fontcolor2"
+      :button_hover_color="slide.button_hover_color"
+      :button_hover_bg="slide.button_hover_bg"
       :bgimage="slide.bgimage"
       :backgroundblend="slide.backgroundblend"
       :subtext_different="slide.subtext_different"
@@ -82,10 +85,12 @@ export default {
             subtext: 'Lapozzon jobbra vagy balra',
             maintext1: 'Fotó | Videó',
             maintext2: 'stúdió',
-            bgcolor: 'hsl(0, 0%, 9%)',
+            bgcolor: 'hsla(0, 0%, 9%, 0)',
             fontcolor: 'hsl(0, 0%, 75%)',
             subcolor: 'hsl(0, 0%, 75%)',
             fontcolor2: 'hsl(0, 0%, 70%)',
+            button_hover_color: 'black',
+            button_hover_bg: 'hsl(0, 0%, 75%)',
             bgimage: 'https://dvstudio.hu/external/DV_logo_weboldallal.png',
             backgroundblend: false,
             subtext_different: false,
@@ -98,11 +103,13 @@ export default {
             subtext: 'Profi Esküvői Csapat',
             maintext1: 'Értjük az egyszeri',
             maintext2: 'Pillanatok Fontosságát.',
-            bgcolor: 'hsl(175, 28%, 32%)',
-            fontcolor: 'hsl(175, 58%, 75%)',
-            subcolor: 'hsl(175, 58%, 75%)',
-            fontcolor2: 'hsl(186, 78%, 70%)',
-            bgimage: require('~/assets/media/wedding_bg4.png'),
+            bgcolor: 'hsl(0, 0%, 60%)',
+            fontcolor: 'hsl(0, 0%, 15%)',
+            subcolor: 'hsl(0, 0%, 20%)',
+            fontcolor2: 'hsl(0, 0%, 15%)',
+            button_hover_color: 'hsl(0, 0%, 15%)',
+            button_hover_bg: 'white',
+            bgimage: require('~/assets/media/wedding_bg6.png'),
             backgroundblend: false,
             subtext_different: false,
             ctatext: 'Részletesebben',
@@ -114,10 +121,12 @@ export default {
             subtext: 'Céges Imázs',
             maintext1: 'Új Köntös',
             maintext2: 'A Márkádnak.',
-            bgcolor: 'hsl(150, 28%, 32%)',
-            fontcolor: 'hsl(150, 58%, 75%)',
-            subcolor: 'hsl(150, 58%, 45%)',
-            fontcolor2: 'hsl(161, 75%, 75%)',
+            bgcolor: 'hsl(210, 50%, 25%)',
+            fontcolor: 'hsl(210, 50%, 75%)',
+            subcolor: 'hsl(210, 50%, 45%)',
+            fontcolor2: 'hsl(210, 50%, 75%)',
+            button_hover_color: 'black',
+            button_hover_bg: 'hsl(210, 50%, 75%)',
             bgimage: require('~/assets/media/_ceg_bg4.png'),
             backgroundblend: true,
             subtext_different: true,
@@ -134,6 +143,8 @@ export default {
             fontcolor: 'hsl(2, 41%, 84%)',
             subcolor: 'hsl(2, 41%, 84%)',
             fontcolor2: 'hsl(10, 61%, 84%)',
+            button_hover_color: 'black',
+            button_hover_bg: 'hsl(2, 41%, 84%)',
             bgimage: require('~/assets/media/_event_bg3.png'),
             backgroundblend: true,
             subtext_different: false,
@@ -215,6 +226,12 @@ export default {
 <style lang="scss" scoped>
 .wrapper {
   width: 100vw;
+  color: hsl(0, 0%, 40%);
+  color: hsl(0, 0%, 80%);
+  color: hsl(210, 50%, 60%);
+  color: #7b7b7b;
+  color: #f4eff3;
+
   min-height: 100vh;
   padding: 0;
   margin: 0;
@@ -234,6 +251,7 @@ export default {
     // margin-inline: 2em;
     color: White;
     font-size: max(2rem, 2.5vw);
+    // font-size: 2.5vw;
     position: absolute;
     width: min-content;
     transition: 500ms;
@@ -244,16 +262,24 @@ export default {
     }
     &.arrow-left {
       // justify-content: flex-end;
-      top: 22%;
+      top: 20%;
       left: 5%;
+      @media (max-width: 50em) and (orientation: landscape) {
+        top: 16.5%;
+        left: 5%;
+      }
       @media (min-width: 50em) {
         top: 33.25%;
         left: 15%;
       }
     }
     &.arrow-right {
-      top: 22%;
+      top: 20%;
       left: 20%;
+      @media (max-width: 50em) and (orientation: landscape) {
+        top: 16.5%;
+        left: 20%;
+      }
       @media (min-width: 50em) {
         top: 33.25%;
         left: 25%;

@@ -6,9 +6,15 @@
       '--font-color': fontcolor,
       '--sub-color': subcolor,
       '--font-color2': fontcolor2,
+      '--button_hover_color': button_hover_color,
+      '--button_hover_bg': button_hover_bg,
       backgroundImage: `url(${bgimage})`,
     }"
   >
+    <div class="background-animation_wrapper" v-if="id == 1">
+      <ccHelperBackground1></ccHelperBackground1>
+    </div>
+
     <div class="subtext">
       <p>{{ subtext }}</p>
     </div>
@@ -54,6 +60,8 @@ export default {
     'backgroundblend',
     'subtext_different',
     'ctaUrl',
+    'button_hover_color',
+    'button_hover_bg',
   ],
 }
 </script>
@@ -83,6 +91,8 @@ export default {
   $mobile-grid-row: 0.5fr 0.5fr 0.5fr 1.25fr 0.775fr;
   $mobile-grid-area: '. . . logo' '. arrowleft arrowright .'
     '. pageno subtitle .' '. . title title' '. . more more';
+  width: 100vw;
+  min-height: 100vh;
   width: 100dvw;
   min-height: 100dvh;
   display: grid;
@@ -96,6 +106,7 @@ export default {
 
   //   --bg-url: url('~/assets/media/' + var(--bg-img));
   //   background: $bg-image;
+
   &.bgblend {
     background-blend-mode: hard-light;
   }
@@ -124,6 +135,16 @@ export default {
     grid-template-areas: $desktop-grid-area;
   }
 
+  .background-animation_wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+  }
+
   // T E X T   S E T U P
   // ----------------
   .subtext {
@@ -144,7 +165,7 @@ export default {
 
     font-family: $ff-ss-6;
     font-weight: 200;
-    font-size: max(2.3rem, 3.7dvw);
+    font-size: max(2.3rem, 3.7vw);
     letter-spacing: -0.015em;
 
     color: var(--font-color);
@@ -152,7 +173,7 @@ export default {
     text-transform: capitalize;
     vertical-align: text-top;
     width: max-content;
-    max-width: 66dvw;
+    max-width: 66vw;
     width: 100%;
     line-height: 1.225;
     position: relative;
@@ -164,8 +185,8 @@ export default {
 
     &:hover + .more-section p,
     &:focus + .more-section p {
-      background: var(--font-color);
-      color: black;
+      background: var(--button_hover_bg);
+      color: var(--button_hover_color);
       padding: 0.4em 1.25em;
       translate: 0;
     }
@@ -180,7 +201,7 @@ export default {
 
     font-family: $ff-ss-2;
     font-weight: 100;
-    font-size: max(0.85rem, 1.5dvw);
+    font-size: max(0.85rem, 1.5vw);
     line-height: 1.5rem;
 
     color: var(--font-color);
@@ -195,7 +216,7 @@ export default {
   .more-section {
     grid-area: more;
     color: var(--font-color);
-    font-size: max(1rem, 1.3dvw);
+    font-size: max(1rem, 1.3vw);
     font-family: $ff-ss-6;
     padding: 2em 0;
     letter-spacing: 0.3em;
@@ -211,13 +232,13 @@ export default {
       cursor: pointer;
       &:hover,
       &:focus {
-        background: var(--font-color);
-        color: black;
+        background: var(--button_hover_bg);
+        color: var(--button_hover_color);
         padding: 0.4em 1.25em;
         translate: 0;
       }
       .more-icon {
-        font-size: clamp(0.8rem, 1.2dvw, 3rem);
+        font-size: clamp(0.8rem, 1.2vw, 3rem);
         svg {
           animation: bounce 2s ease infinite;
         }

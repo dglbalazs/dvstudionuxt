@@ -1,7 +1,7 @@
 <template>
   <div>
     <transition name="loading">
-      <LoadingLoader v-if="!initialized"></LoadingLoader>
+      <LoadingLoaderDV v-if="!initialized"></LoadingLoaderDV>
     </transition>
     <heading v-if="initialized"></heading>
     <Nuxt v-if="initialized" />
@@ -21,7 +21,7 @@ export default {
   mounted: function () {
     setTimeout(() => {
       this.initialized = true
-    }, 1500)
+    }, 2300)
   },
   methods: {
     slideSelected(ctaUrl) {

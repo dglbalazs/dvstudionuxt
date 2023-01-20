@@ -2,7 +2,8 @@
   <div class="wedding level2">
     <CcBackButton destination="/"></CcBackButton>
     <CcHeaderVideo
-      :videoSrc="require('~/assets/media/ceges720.mp4')"
+      videoSrcWebm="https://dvstudio.hu/external/ceges_header.webm"
+      videoSrcMp4="https://dvstudio.hu/external/ceges720.mp4"
     ></CcHeaderVideo>
     <div class="subpage-content__wrapper">
       <!-- <v-row align="center" justify="center">
@@ -94,9 +95,19 @@ export default {
         },
       },
       pagemiddletext: {
-        middleText: 'Mi tudjuk, hogy nincs két egyforma esküvő',
-        subText:
-          'ezért miután kinéztétek a Hozzátok illő csomagajánlatunkat, mi azt személyre szabjuk Nektek, hogy olyan szépen és kifinomultan illeszkedjen Hozzátok, mint az esküvői ruhátok',
+        middleText: 'Fő szolgáltatásaink',
+        subText: '',
+        listtxt: [
+          'Termékfotózás',
+          'Grafikai tervezés',
+          'Céges fotózások',
+          'Reklámfilm forgatás',
+          'Videó vágás',
+          'Social media tartalmak gyártása',
+          'Webináriumok - workshopok média támogatása / lebonyolítása',
+          'Podcast készítés',
+          'Business Headshot fotozás',
+        ],
       },
       images: [
         {

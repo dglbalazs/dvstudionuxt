@@ -1,8 +1,9 @@
 <template>
-  <div class="wedding level2">
+  <div class="events level2">
     <CcBackButton destination="/"></CcBackButton>
     <CcHeaderVideo
-      :videoSrc="require('~/assets/media/rendezveny720.mp4')"
+      videoSrcWebm="https://dvstudio.hu/external/rendezveny_header.webm"
+      videoSrcMp4="https://dvstudio.hu/external/rendezveny720.mp4"
     ></CcHeaderVideo>
     <div class="subpage-content__wrapper">
       <!-- <v-row align="center" justify="center">
@@ -13,10 +14,10 @@
       <v-divider></v-divider> -->
       <v-row align="center" justify="space-between" id="page-header_wrapper">
         <v-col class="text-left" id="page-header_main" cols="6">
-          Esküvők
+          Rendezvények
         </v-col>
         <v-col class="text-right" id="page-subheader_sub" cols="6">
-          100+ esemény
+          széles körű projektek
         </v-col>
       </v-row>
       <v-divider></v-divider>
@@ -94,9 +95,9 @@ export default {
         },
       },
       pagemiddletext: {
-        middleText: 'Mi tudjuk, hogy nincs két egyforma esküvő',
+        middleText: 'A rendezvények széles körű projektek',
         subText:
-          'ezért miután kinéztétek a Hozzátok illő csomagajánlatunkat, mi azt személyre szabjuk Nektek, hogy olyan szépen és kifinomultan illeszkedjen Hozzátok, mint az esküvői ruhátok',
+          'így azok életre keltése, és az ahhoz szükséges partnerek megtalálása nem egyszerű - a DV Stúdiónál nem csak a digitális élményt szolgáltatjuk, de a korábbi tapasztalatainkat is megosztjuk a tervezés során. Nekünk is érdekünk, hogy minden a lehető leggördülékenyebben zajljon ahhoz, hogy a lehető legjobb minőségben tudjuk elkészíteni a munkánkat.',
       },
       images: [
         {
@@ -155,7 +156,7 @@ $ff-ss-4: 'Roboto Condensed', sans-serif;
 $ff-ss-5: 'Roboto Flex', sans-serif;
 $ff-ss-6: 'Open Sans', sans-serif;
 
-.wedding {
+.events {
   overflow-y: hidden;
   hr {
     // margin: 1em 0;

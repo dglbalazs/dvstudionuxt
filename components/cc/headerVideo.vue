@@ -1,5 +1,5 @@
 <template>
-  <div class="relative">
+  <div>
     <div class="head-video-wrapper">
       <video
         autoplay="autoplay"
@@ -8,32 +8,52 @@
         muted
         playsinline
         webkit-playsinline
-        :asrc="videoSrc"
+        :asrc="videoSrcWebm"
         class="w-full h-full object-cover"
       >
-        <source :src="videoSrc" type="video/mp4" />
-        <!-- <source src="~/assets/media/hero_bg_720p_bw.webm" type="video/webm" /> -->
+        <source :src="videoSrcWebm" type="video/webm" />
+        <source :src="videoSrcMp4" type="video/mp4" />
       </video>
     </div>
-    <div class="absolute inset-0 bg-black opacity-50"></div>
+    <div class="absolute inset-0 bg-black opacity-0"></div>
+    <div class="head-video-bridge"></div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['videoSrc'],
+  props: ['videoSrcWebm', 'videoSrcMp4'],
 }
 </script>
 
 <style lang="scss">
 .head-video-wrapper {
-  height: 400px;
+  // position: relative;
+  // z-index: 4;
+  min-height: 500px;
+  height: 55vh;
   video {
+    object-position: 45% 50%;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    aspect-ratio: 1920/540;
+    aspect-ratio: 16/9;
   }
   overflow: hidden;
+}
+.head-video-bridge {
+  // border: 1px solid pink;
+  width: 100vw;
+  min-height: 500px;
+  height: 55vh;
+  position: absolute;
+  top: 0%;
+  translate: 0% 2%;
+  // translate: 0% -100%;
+  // z-index: 5;
+  background-image: url('~/assets/media/wave-haikei.svg');
+  // opacity: 0.9;
+  background-size: cover;
+  background-position: center bottom;
 }
 </style>

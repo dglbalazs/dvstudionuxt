@@ -2,7 +2,8 @@
   <div class="wedding level2">
     <CcBackButton destination="/"></CcBackButton>
     <CcHeaderVideo
-      :videoSrc="require('~/assets/media/eskuvo720.mp4')"
+      videoSrcWebm="https://dvstudio.hu/external/eskuvo_header.webm"
+      videoSrcMp4="https://dvstudio.hu/external/eskuvo720.mp4"
     ></CcHeaderVideo>
     <div class="subpage-content__wrapper">
       <!-- <v-row align="center" justify="center">

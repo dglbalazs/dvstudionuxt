@@ -4,11 +4,20 @@
     <div class="flex-container">
       <!-- Logo -->
       <div class="logo">
-        <img
+        <!-- <img
           src="~/assets/logos/transparent_black_notext.png"
           alt="DV Studio"
           srcset=""
-        />
+        /> -->
+        <v-btn
+          elevation="2"
+          outlined
+          rounded
+          id="cta_button"
+          color="#fff"
+          href="mailto:info@dvstudio.hu?subject=DV Stúdió - Egyeztetés kérése&body=Kedves DV Stúdió,%0ASzeretnék egyeztetni az alábbival kapcsolatban Veletek:%0A%0A%0A%0A"
+          >Egyeztessünk</v-btn
+        >
       </div>
       <!-- Menu items -->
       <!-- <div class="ml-6 hidden md:flex items-center justify-between space-x-6">
@@ -32,6 +41,19 @@
 <script>
 export default {
   name: 'heading',
+  methods: {
+    navigateTo(pageloc) {
+      if (!this.selected) {
+        this.selected = true
+        setTimeout(() => {
+          window.open(pageloc, '_blank')
+          setTimeout(() => {
+            this.selected = false
+          }, 1000)
+        }, 100)
+      }
+    },
+  },
 }
 </script>
 <style lang="scss" scoped>
@@ -57,6 +79,28 @@ nav {
         height: clamp(3.5rem, 9vw, 5rem);
         filter: invert(1);
         object-fit: cover;
+      }
+      #cta_button {
+        mix-blend-mode: difference;
+        $color1: #fff;
+        $color2: #000;
+        color: $color2;
+        // background-color: $color1;
+        // border-color: $color1;
+        // border-radius: 0.25rem;
+        // padding: 0.5rem 1rem;
+        // font-size: 0.875rem;
+        // line-height: 1.5;
+        // letter-spacing: 0.02857em;
+        // text-transform: uppercase;
+        // font-weight: 500;
+        // border: 1px solid transparent;
+        transition: all 0.2s ease-in-out;
+        &:hover {
+          background-color: $color2;
+          color: $color1;
+          border-color: $color2;
+        }
       }
     }
   }

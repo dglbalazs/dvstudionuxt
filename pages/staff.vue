@@ -63,8 +63,8 @@ export default {
       staff_info: {
         Ati: {
           id: 1,
-          name: 'Ati',
-          position: 'Az alapító',
+          name: 'Attila',
+          position: 'Stúdióvezető',
           description: 'Fotó, videó, utómunka',
           img: require('~/assets/media/Ati.png'),
           clr1: 'rgba(7, 82, 7, 0.15)',
@@ -73,7 +73,7 @@ export default {
         Vera: {
           id: 2,
           name: 'Vera',
-          position: 'Az intézkedő',
+          position: 'Operatőr',
           description: 'Fotó, videó, utómunka',
           img: require('~/assets/media/Vera.png'),
           clr1: 'rgba(7, 18, 82, 0.15)',
@@ -81,8 +81,8 @@ export default {
         },
         Tomi: {
           id: 3,
-          name: 'Tomi',
-          position: 'A szakértő',
+          name: 'Tamás',
+          position: 'Rendező',
           description: 'Fotó, videó, utómunka',
           img: require('~/assets/media/TomiStaff.png'),
           clr1: 'rgba(82, 18, 7, 0.15)',

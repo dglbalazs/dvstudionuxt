@@ -11,6 +11,7 @@
       <CcText
         :txt="pagemiddletext.middleText"
         :subtxt="pagemiddletext.subText"
+        :listtxt="pagemiddletext.listtxt"
         light
         center
         big
@@ -33,7 +34,16 @@
 
 <script>
 export default {
-  props: ['images', 'pagemiddletext'],
+  props: {
+    images: {
+      type: Array,
+      default: () => [],
+    },
+    pagemiddletext: {
+      type: Object,
+      default: () => ({}),
+    },
+  },
 }
 </script>
 
