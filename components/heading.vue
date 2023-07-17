@@ -18,6 +18,12 @@
           href="mailto:info@dvstudio.hu?subject=DV Stúdió - Egyeztetés kérése&body=Kedves DV Stúdió,%0ASzeretnék egyeztetni az alábbival kapcsolatban Veletek:%0A%0A%0A%0A"
           >Egyeztessünk</v-btn
         >
+        <div class="telephone-number">
+          <a href="tel:+36202506936">
+            <v-icon size="1.5em" color="#fff">mdi-phone </v-icon> +36 20 250
+            6936</a
+          >
+        </div>
       </div>
       <!-- Menu items -->
       <!-- <div class="ml-6 hidden md:flex items-center justify-between space-x-6">
@@ -101,6 +107,12 @@ nav {
           color: $color1;
           border-color: $color2;
         }
+      }
+      .telephone-number {
+        font-size: 0.75rem;
+        color: #fff;
+        margin-top: 0.5rem;
+        text-align: right;
       }
     }
   }

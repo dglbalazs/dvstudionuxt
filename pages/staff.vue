@@ -42,6 +42,23 @@
         letterspace-medium
         fitcontent
       ></CcText>
+      <div class="fun-facts">
+        <CcText
+          v-for="(item, index) in staff.listitems"
+          :key="index"
+          class="staff_funfact"
+          :txt="item"
+          subtxt=""
+          light
+          right
+          small
+          ss3
+          bold
+          doubleline
+          letterspace-medium
+          fitcontent
+        ></CcText>
+      </div>
     </div>
     <ccStaffNavigator
       class="staff-nav"
@@ -65,7 +82,13 @@ export default {
           id: 1,
           name: 'Attila',
           position: 'Stúdióvezető',
-          description: 'Fotó, videó, utómunka',
+          description: 'fotós - operatőr',
+          listitems: [
+            'Több, mint 500 rendezvény',
+            'Drónpilóta',
+            'Személyiség típus: extrovertált',
+            'Kiemelt tulajdonsága: szakértelem',
+          ],
           img: require('~/assets/media/Ati.png'),
           clr1: 'rgba(7, 82, 7, 0.15)',
           clr2: 'rgba(7, 150, 7, 0.15)',
@@ -74,8 +97,14 @@ export default {
           id: 2,
           name: 'Vera',
           position: 'Operatőr',
-          description: 'Fotó, videó, utómunka',
+          description: 'operatőr - vágó',
           img: require('~/assets/media/Vera.png'),
+          listitems: [
+            'Több, mint 400 óra megvágott anyag',
+            'Okleveles pszichológus',
+            'Személyiség típus: extrovertált',
+            'Kiemelt tulajdonsága: maximalizmus',
+          ],
           clr1: 'rgba(7, 18, 82, 0.15)',
           clr2: 'rgba(7, 18, 150, 0.15)',
         },
@@ -83,7 +112,13 @@ export default {
           id: 3,
           name: 'Tamás',
           position: 'Rendező',
-          description: 'Fotó, videó, utómunka',
+          description: 'rendező - operatőr',
+          listitems: [
+            'Aranypálma jelölés Canne-ban',
+            'Marketing szakember',
+            'Személyiség típus: introvertált',
+            'Kiemelt tulajdonsága: kreativitás',
+          ],
           img: require('~/assets/media/TomiStaff.png'),
           clr1: 'rgba(82, 18, 7, 0.15)',
           clr2: 'rgba(150, 18, 7, 0.15)',
@@ -172,7 +207,7 @@ $ff-ss-6: 'Open Sans', sans-serif;
       //   transform: translateX(-50%);
       //   border: 1px solid pink;
       @media (orientation: landscape) and (min-width: 50em) {
-        top: 15vh;
+        top: 55vh;
         left: 25vw;
       }
     }
@@ -187,6 +222,25 @@ $ff-ss-6: 'Open Sans', sans-serif;
         top: 30vh;
         right: 10vw;
       }
+    }
+
+    .fun-facts {
+      position: absolute;
+      top: 55vh;
+      top: 55dvh;
+      right: 10vw;
+      // background: hsl(0, 0%, 15%);
+      // padding: 0.25em;
+      display: flex;
+      display: none;
+      flex-direction: column;
+      gap: 1.5em;
+      text-align: right;
+      // width: 30vw;
+      div {
+        width: 100%;
+      }
+      // width: 100vw;
     }
   }
   .staff-nav {

@@ -15,26 +15,50 @@
       <ccHelperBackground1></ccHelperBackground1>
     </div>
 
-    <div class="subtext">
+    <div class="subtext" v-if="id == 1">
       <p>{{ subtext }}</p>
     </div>
+    <div class="subtext" v-if="id != 1">
+      <h2>{{ subtext }}</h2>
+    </div>
     <div class="pageno">
-      <p>{{ id }} - 4</p>
+      <p>{{ id }} - 5</p>
     </div>
     <div
       class="maintext"
       tabindex="0"
-      @click="$nuxt.$emit('slideSelect', ctaUrl)"
+      @click="
+        () => {
+          if (type != 'promo-site') $nuxt.$emit('slideSelect', ctaUrl)
+        }
+      "
     >
-      <p class="maintext1">{{ maintext1 }}</p>
-      <p :class="['maintext2', { emphasized: subtext_different }]">
+      <h1 class="maintext1" v-if="id == 1">{{ maintext1 }}</h1>
+      <h1
+        v-if="id == 1"
+        :class="['maintext2', { emphasized: subtext_different }]"
+      >
         {{ maintext2 }}
-      </p>
+      </h1>
+      <div class="maintext1" v-if="id != 1">{{ maintext1 }}</div>
+      <div
+        :class="['maintext2', { emphasized: subtext_different }]"
+        v-if="id != 1"
+      >
+        {{ maintext2 }}
+      </div>
     </div>
-    <div class="more-section" @click="$nuxt.$emit('slideSelect', ctaUrl)">
+    <div
+      class="more-section"
+      @click="
+        () => {
+          if (type != 'promo-site') $nuxt.$emit('slideSelect', ctaUrl)
+        }
+      "
+    >
       <p>
         {{ ctatext }}
-        <span class="more-icon">
+        <span class="more-icon" v-if="type != 'promo-site'">
           <font-awesome-icon icon="fa-solid fa-arrow-turn-down" />
         </span>
       </p>
@@ -62,6 +86,7 @@ export default {
     'ctaUrl',
     'button_hover_color',
     'button_hover_bg',
+    'type',
   ],
 }
 </script>

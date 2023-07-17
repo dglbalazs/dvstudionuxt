@@ -23,6 +23,11 @@
 
       <v-card-text class="white--text pt-0">
         Látogass el social media felületeinkre, hogy mindig naprakész maradj!
+        <br /><br />
+        <hr />
+        <br />
+        4032, Debrecen, Tessedik Sámuel utca 81. |
+        <a href="tel:+36202506936">+36 20 250 6936</a>
       </v-card-text>
 
       <v-divider></v-divider>

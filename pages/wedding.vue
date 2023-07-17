@@ -43,7 +43,7 @@
         >
         </CcInfoCard>
       </v-row>
-      <ccWeddingVideoWatcher></ccWeddingVideoWatcher>
+      <ccWeddingYoutubeVideoWatcher></ccWeddingYoutubeVideoWatcher>
       <ccSPPhotoCollection
         :images="images"
         :pagemiddletext="pagemiddletext"

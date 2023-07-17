@@ -60,6 +60,7 @@
           slider.slideChangeDirection == 'right' &&
           slider.slideChange == true,
       }"
+      :type="slide.type"
     ></slide>
   </div>
 </template>
@@ -70,10 +71,10 @@ export default {
     return {
       slider: {
         current: 0,
-        slides: ['landing', 'eskuvo', 'ceg', 'rendezveny'],
+        slides: ['landing', 'eskuvo', 'ceg', 'rendezveny', 'photo_booth'],
         currentName: 'landing',
         newName: '',
-        maxNumber: 3,
+        maxNumber: 4,
         slideChange: false,
         slideChangeDirection: undefined,
         currentColor: 'hsl(0, 0%, 75%)',
@@ -96,6 +97,7 @@ export default {
             subtext_different: false,
             ctatext: 'Ismerje meg csapatunkat',
             ctaUrl: '/staff',
+            type: 'real-site',
           },
           {
             id: 2,
@@ -114,6 +116,7 @@ export default {
             subtext_different: false,
             ctatext: 'Részletesebben',
             ctaUrl: '/wedding',
+            type: 'real-site',
           },
           {
             id: 3,
@@ -132,6 +135,7 @@ export default {
             subtext_different: true,
             ctatext: 'Részletesebben',
             ctaUrl: '/branding',
+            type: 'real-site',
           },
           {
             id: 4,
@@ -150,6 +154,26 @@ export default {
             subtext_different: false,
             ctatext: 'Részletesebben',
             ctaUrl: '/events',
+            type: 'real-site',
+          },
+          {
+            id: 5,
+            name: 'photo_booth',
+            subtext: 'DV Mediabox',
+            maintext1: 'Egyedülálló fotó és videó',
+            maintext2: 'automata rendezvényekre',
+            bgcolor: 'hsla(0, 0%, 4%, 1)',
+            fontcolor: 'hsla(0, 0%, 84%, 1)',
+            subcolor: 'hsla(0, 0%, 84%, 1)',
+            fontcolor2: 'hsla(0, 0%, 84%, 1)',
+            button_hover_color: 'black',
+            button_hover_bg: 'hsla(0, 0%, 84%, 1)',
+            bgimage: require('~/assets/media/photo_booth_bg.png'),
+            backgroundblend: false,
+            subtext_different: false,
+            ctatext: 'Hamarosan...',
+            ctaUrl: '/events',
+            type: 'promo-site',
           },
         ],
       },
