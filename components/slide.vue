@@ -56,7 +56,7 @@
         }
       "
     >
-      <p>
+      <p v-if="ctatext != ''">
         {{ ctatext }}
         <span class="more-icon" v-if="type != 'promo-site'">
           <font-awesome-icon icon="fa-solid fa-arrow-turn-down" />

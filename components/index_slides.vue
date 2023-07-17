@@ -95,9 +95,9 @@ export default {
             bgimage: 'https://dvstudio.hu/external/DV_logo_weboldallal.png',
             backgroundblend: false,
             subtext_different: false,
-            ctatext: 'Ismerje meg csapatunkat',
+            ctatext: '',
             ctaUrl: '/staff',
-            type: 'real-site',
+            type: 'promo-site',
           },
           {
             id: 2,
