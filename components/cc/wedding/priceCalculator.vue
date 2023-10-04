@@ -477,9 +477,9 @@ export default {
       // Add the base price for each remaining standalone option
       for (const option of selectedOptions) {
         if (option === 'ceremonyPhotos') {
-          totalPrice += 80000
+          totalPrice += 60000
         } else if (option === 'weddingPhoto') {
-          totalPrice += 90000
+          totalPrice += 130000
         } else if (option === 'creativePhoto') {
           totalPrice += 60000
         } else if (option === 'engagementPhoto') {
