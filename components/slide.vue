@@ -11,7 +11,7 @@
       backgroundImage: `url(${bgimage})`,
     }"
   >
-    <div class="background-animation_wrapper" v-if="id == 1">
+    <div class="background-animation_wrapper" v-if="id == -1">
       <ccHelperBackground1></ccHelperBackground1>
     </div>
 
@@ -22,7 +22,7 @@
       <h2>{{ subtext }}</h2>
     </div>
     <div class="pageno">
-      <p>{{ id }} - 5</p>
+      <p>{{ id }} - 4</p>
     </div>
     <div
       class="maintext"
@@ -128,6 +128,11 @@ export default {
   grid-template-columns: $mobile-grid-col;
   grid-template-rows: $mobile-grid-row;
   grid-template-areas: $mobile-grid-area;
+  background-size: contain;
+
+  @media (max-width: 55rem) {
+    background-position: 75%;
+  }
 
   //   --bg-url: url('~/assets/media/' + var(--bg-img));
   //   background: $bg-image;
@@ -139,7 +144,9 @@ export default {
   background-position: center 40%;
   background-repeat: no-repeat;
   background-size: cover;
-  // filter: brightness(0.9) saturate(0.9) contrast(0.9);
+  @media (max-width: 55rem) {
+    // filter: brightness(0.7) saturate(0.9) contrast(0.9);
+  }
 
   transition-property: translate, scale;
   transition-duration: 1500ms, 1500ms;

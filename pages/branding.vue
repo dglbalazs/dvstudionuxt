@@ -2,8 +2,8 @@
   <div class="wedding level2">
     <CcBackButton destination="/"></CcBackButton>
     <CcHeaderVideo
-      videoSrcWebm="https://dvstudio.hu/external/ceges_header.webm"
-      videoSrcMp4="https://dvstudio.hu/external/ceges720.mp4"
+      videoSrcWebm="https://dvstudio.hu/external/ceges_uj720.webm"
+      videoSrcMp4="https://dvstudio.hu/external/ceges_uj720.mp4"
     ></CcHeaderVideo>
     <div class="subpage-content__wrapper">
       <!-- <v-row align="center" justify="center">
@@ -107,12 +107,13 @@ export default {
           'Webináriumok - workshopok média támogatása / lebonyolítása',
           'Podcast készítés',
           'Business Headshot fotozás',
+          'Drónfelvétel készítés',
         ],
       },
       images: [
         {
           //https://drive.google.com/uc?export=view&id=1uChRHboKVRowqPLJydEyjEmE8klfdGpT
-          src: 'https://dvstudio.hu/external/ceg_1_medium.jpg',
+          src: 'https://dvstudio.hu/external/ceg_8_medium.jpg',
           // lazysrc:
           //   'https://lh5.googleusercontent.com/StXWmS0mwwlnJJdJ3rv8tPP7gHjSlr--2m2sruESeDoGzKxJRe7uAYbY09XpFH6b1J4=w100',
           alt: 'Image 1',
@@ -142,7 +143,7 @@ export default {
           alt: 'Image 5',
         },
         {
-          src: 'https://dvstudio.hu/external/ceg_6_medium.jpg',
+          src: 'https://dvstudio.hu/external/ceg_7_medium.jpg',
           // lazysrc:
           //   'https://lh6.googleusercontent.com/Cr7bF1vEj6CoIoanQmvotxkdPtVpe4hqe-6mDGo5bM08quxE2JJJwzd-Y4GCxcmMtoQ=w100',
           alt: 'Image 6',
